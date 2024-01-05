@@ -5,7 +5,8 @@
         "packages/ui/*",
         "packages/ui-icons/*",
         "packages/ui-theme/*",
-        "packages/docs/*"
+        "packages/docs/*",
+        "demo"
     ],
     "description": "通用组件库",
     "author": "osc,baidu",
@@ -76,6 +77,7 @@
         }
     },
     "resolutions": {
-        "@types/react": "17.0.53"
+        "@types/react": "17.0.53",
+        "antd": "5.12.5"
     }
 }
