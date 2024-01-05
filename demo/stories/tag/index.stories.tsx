@@ -4,9 +4,10 @@ import Divider from '@osui/divider';
 import Input from '@osui/input';
 import Tooltip from '@osui/tooltip';
 import {PlusOutlined} from '@ant-design/icons';
-import {IconPlusOutlined} from '@osui/icons-icloud';
+import {IconPlusOutlined} from '@osui/icons';
 import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
 import styled from '@emotion/styled';
+import BrandProvider from '@osui/brand-provider';
 import Tag from '@osui/tag';
 
 export default {
@@ -15,7 +16,7 @@ export default {
 
 export const Demo = () => {
     return (
-        <>
+        <BrandProvider brand="icloud">
             {/* success */}
             <Divider orientation="left">基本</Divider>
             <Tag>标签</Tag>
@@ -70,7 +71,7 @@ export const Demo = () => {
             <p>禁用</p>
             <Tag outlined disabled>标签</Tag>
             <Tag solid disabled>标签</Tag>
-        </>
+        </BrandProvider>
     );
 };
 
@@ -99,37 +100,47 @@ export const Add = () => {
         [tags]
     );
 
-    const showInput = useCallback(() => {
-        setInputVisible(true);
-    }, []
+    const showInput = useCallback(
+        () => {
+            setInputVisible(true);
+        },
+        []
     );
 
-    const handleInputChange = useCallback(e => {
-        setInputValue(e.target.value);
-    }, []
+    const handleInputChange = useCallback(
+        e => {
+            setInputValue(e.target.value);
+        },
+        []
     );
 
-    const handleInputConfirm = useCallback(() => {
-        if (inputValue && !tags.includes(inputValue)) {
-            setTags([...tags, inputValue]);
-        }
-        setInputVisible(false);
-        setInputValue('');
-    }, [inputValue, tags]
+    const handleInputConfirm = useCallback(
+        () => {
+            if (inputValue && !tags.includes(inputValue)) {
+                setTags([...tags, inputValue]);
+            }
+            setInputVisible(false);
+            setInputValue('');
+        },
+        [inputValue, tags]
     );
 
-    const handleEditInputChange = useCallback(e => {
-        setEditInputValue(e.target.value);
-    }, []
+    const handleEditInputChange = useCallback(
+        e => {
+            setEditInputValue(e.target.value);
+        },
+        []
     );
 
-    const handleEditInputConfirm = useCallback(() => {
-        const newTags = [...tags];
-        newTags[editInputIndex] = editInputValue;
-        setTags(newTags);
-        setEditInputIndex(-1);
-        setEditInputValue('');
-    }, [editInputIndex, editInputValue, tags]
+    const handleEditInputConfirm = useCallback(
+        () => {
+            const newTags = [...tags];
+            newTags[editInputIndex] = editInputValue;
+            setTags(newTags);
+            setEditInputIndex(-1);
+            setEditInputValue('');
+        },
+        [editInputIndex, editInputValue, tags]
     );
 
     return (
