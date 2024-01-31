@@ -78,6 +78,9 @@ export const components: ThemeConfig['components'] = {
     },
     Tooltip: {
         colorBgBase: '#fff',
+        // antd 5 在某个版本之后更改了 token 名
+        colorBgDefault: '#fff',
+        colorBgSpotlight: '#fff',
         colorTextLightSolid: '#151B26',
     },
     Breadcrumb: {
@@ -87,6 +90,8 @@ export const components: ThemeConfig['components'] = {
     Menu: {
         colorItemTextHover: '#2468F2',
         colorItemBgHover: 'transparent',
+        borderRadiusLG: 0,
+        marginXXS: 0,
     },
     Tag: {
         lineHeight: 1.8,
@@ -104,6 +109,9 @@ export const components: ThemeConfig['components'] = {
     },
     Avatar: {
         controlHeightSM: 21,
+        containerSizeLG: 32,
+        containerSize: 24,
+        containerSizeSM: 16,
         // fontSize: 12,
     },
     Checkbox: {
@@ -113,3 +121,4 @@ export const components: ThemeConfig['components'] = {
         colorBgBody: '#F7F7F9',
     },
 };
+

@@ -1,4 +1,7 @@
-import React, {useContext, useMemo} from 'react';
+import React, {
+    useContext, useState, useEffect,
+    useRef, useCallback,
+} from 'react';
 import {ConfigProvider, ThemeConfig} from 'antd';
 import Empty from '@osui/empty';
 import zhCN from 'antd/locale/zh_CN';
@@ -13,11 +16,17 @@ type Brand = 'icloud';
 export interface BrandContextValue {
     brand: Brand | undefined;
     designToken?: ThemeConfig;
+    setTheme: ((theme: ThemeConfig) => ThemeConfig)
+    | ((theme: ThemeConfig) => void);
 }
 
 export const BrandContext = React.createContext<BrandContextValue>({
     brand: undefined,
     designToken: undefined,
+    setTheme: () => {
+        console.warn('空函数');
+        return {};
+    },
 });
 
 const theme: ThemeConfig = {
@@ -50,13 +59,46 @@ const BrandProvider: React.FC<React.PropsWithChildren<{
 } & ConfigProviderProps>> = (
     {brand, theme: outerTheme, children, ...ConfigProviderProps}
 ) => {
-    const finalTheme = useMemo(
-        () => mergeTheme(outerTheme, theme),
+    const themeFromHook = useRef<ThemeConfig>({});
+    const [finalTheme, setTheme] = useState(theme);
+
+    useEffect(
+        () => {
+            const newTheme = mergeTheme(
+                themeFromHook.current,
+                mergeTheme(
+                    outerTheme,
+                    theme
+                )
+            );
+            // 合并优先级
+            setTheme(newTheme);
+        },
         [outerTheme]
     );
+
+    const setThemeOutside = useCallback(
+        (outTheme: ((outTheme: ThemeConfig) => ThemeConfig) | ThemeConfig) => {
+            if (typeof outTheme === 'function') {
+                themeFromHook.current = outTheme(themeFromHook.current);
+            } else {
+                themeFromHook.current = mergeTheme(
+                    outTheme,
+                    themeFromHook.current
+                );
+            }
+            setTheme(oldThme => mergeTheme(
+                themeFromHook.current,
+                oldThme
+            ));
+        },
+        []
+    );
+
     const context: BrandContextValue = {
         brand,
         designToken: finalTheme,
+        setTheme: setThemeOutside,
     };
     return (
         <BrandContext.Provider value={context}>

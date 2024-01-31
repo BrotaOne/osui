@@ -29,7 +29,7 @@
     "devDependencies": {
         "@ant-design/icons": "^4.7.0",
         "@babel/cli": "^7.10.5",
-        "@osui/brand-provider": "^3.0.4",
+        "@osui/brand-provider": "workspace",
         "@osui/icloud-theme": "^3.0.4",
         "@osui/icons": "^3.0.4",
         "@osui/theme": "^3.0.4",
