@@ -1,5 +1,6 @@
 import {Layout as AntdLayout, type SiderProps as AntdSiderProps} from 'antd';
 export type {LayoutProps} from 'antd';
+import {type CollapseType} from 'antd/es/layout/Sider';
 import InternalLayout from 'antd/es/layout/layout';
 import React, {useState} from 'react';
 import {IconCaretDownOutlined} from '@osui/icons';
@@ -17,55 +18,51 @@ type SiderType = React.ForwardRefExoticComponent<
 const clsPrefix = 'osui-sider';
 
 const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
-    {newCollapseStyle = false, ...props},
+    {newCollapseStyle = false, className, trigger: triggerIn, onCollapse, ...props},
     ref
 ) => {
-    const {
-        onCollapse,
-        collapsible,
-        defaultCollapsed,
-        trigger: triggerIn,
-        collapsed: collapsedIn,
-        ...restProps
-    } = props;
-    const [collapsed, setCollapsed] = useState(defaultCollapsed || false);
-    const toggle = () => {
-        setCollapsed(!collapsed);
-        onCollapse && onCollapse(!collapsed, 'clickTrigger');
+    const [collapsed, setCollapsed] = useState(
+        'collapsed' in props ? props.collapsed : props.defaultCollapsed
+    );
+    const finaleClassName = [
+        className ? className : '',
+        newCollapseStyle ? ` ${clsPrefix}-new-collapse-style` : '',
+    ].filter(v => v).join(' ');
+
+    const collapsedWidth = newCollapseStyle
+        ? {collapsedWidth: 0}
+        : ('collapsedWidth' in props
+            ? {collapsedWidth: props.collapsedWidth}
+            : {}
+        );
+
+    const triggerInnerClassName = `${clsPrefix}-sider-item`
+        + (collapsed ? ` ${clsPrefix}-sider-item-collapse` : '');
+
+    const trigger = triggerIn ? {trigger: triggerIn}
+        : newCollapseStyle
+            ? {
+                trigger:
+                <IconCaretDownOutlined className={triggerInnerClassName} />,
+            }
+            : {};
+
+    const handleSetCollapsed = (value: boolean, type: CollapseType) => {
+        if (!('collapsed' in props)) {
+            setCollapsed(value);
+        }
+        onCollapse?.(value, type);
     };
 
-    const siderProps = newCollapseStyle ? restProps : props;
-    const siderDom = <AntdLayout.Sider {...siderProps} ref={ref} />;
-
-    if (!newCollapseStyle) {
-        return siderDom;
-    }
-
-    const collapse = collapsedIn || collapsed;
-    const triggerClassName = (clsPrefix + '-trapezoid')
-        + (collapse
-            ? ` ${clsPrefix}-trapezoid-collapse`
-            : '');
-    const triggerInnerClassName = `${clsPrefix}-collapse-item`;
-    const trigger = collapsible ? (
-        <div
-            onClick={toggle}
-            className={triggerClassName}
-        >
-            {triggerIn
-                ? <div className={triggerInnerClassName}>{triggerIn}</div>
-                : <IconCaretDownOutlined className={triggerInnerClassName} />
-            }
-        </div>
-    )
-        : <></>;
     return (
-        <div className={clsPrefix + '-custom'}>
-            <div className={`${clsPrefix}-container${collapse ? '-collapse' : ''}`}>
-                {siderDom}
-            </div>
-            {trigger}
-        </div>
+        <AntdLayout.Sider
+            {...props}
+            ref={ref}
+            className={finaleClassName}
+            {...collapsedWidth}
+            {...trigger}
+            onCollapse={handleSetCollapsed}
+        />
     );
 });
 

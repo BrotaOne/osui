@@ -45,7 +45,7 @@ export const Demo = () => {
     const [newCollapseStyle, setNewCollapseStyle] = useState(false);
     const [useCustomTrigger, setUseCustomTrigger] = useState(false);
     const [collapsed, setCollapsed] = useState(false);
-    const style = {fontSize: 8, width: 16};
+    const style = newCollapseStyle ? {fontSize: 10, marginLeft: -12, color: '#000'} : {};
     const trigger = collapsed ? <div style={style}>展开</div> : <div style={style}>收起</div>;
     return (
         <BrandProvider>
