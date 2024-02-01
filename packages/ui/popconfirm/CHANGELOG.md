@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.5-alpha.0 (2024-01-31)
+
+
+### Bug Fixes
+
+* @osui/icons调整icon名称，如下： ([8b9033a](https://gitee.com/gitee-fe/osui/tree/master/commits/8b9033af14f14ebae853692523739ca22c64123a))
+* cascader, empty, input-number, popconfirm, popover调整 ([90c5735](https://gitee.com/gitee-fe/osui/tree/master/commits/90c573563bd475048963581d3b06a828ff3b7ee2))
+* popconfirm box-shadow修复 ([3d14c20](https://gitee.com/gitee-fe/osui/tree/master/commits/3d14c20bf8f8d1c3c4f7e0fc0439d9777758ded0))
+* popconfirm box-shadow修复 ([7099062](https://gitee.com/gitee-fe/osui/tree/master/commits/7099062bf708996a1fa5ac6d52a710a30e50dd12))
+* 修复BrandProvider children, Popconfirm导出ConfirmContentWithTitle ([a8badf6](https://gitee.com/gitee-fe/osui/tree/master/commits/a8badf6bcef26eb2f1e0a4fa148b5b00988e6adb))
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+* 修复typescript 类型错误 ([f18efab](https://gitee.com/gitee-fe/osui/tree/master/commits/f18efab2a15a47cc163dceba128b521c5522063f))
+* 升级antd到4.18.4,但是现在table exapandable和rowSelection的顺序有问题 ([f7af7bb](https://gitee.com/gitee-fe/osui/tree/master/commits/f7af7bbad5ed53099f4cc4c97c5852e631846616))
+* 升级antd到4.21.3, 清除一些不必要的组件 ([e582467](https://gitee.com/gitee-fe/osui/tree/master/commits/e58246764a8309a964b86f26fa229242d9241173))
+* 对组件增加类型导出 ([36160d1](https://gitee.com/gitee-fe/osui/tree/master/commits/36160d14e8fee068f34d363d529345d95cfbd39e))
+* 支持antd@4.21.0 ([8397faa](https://gitee.com/gitee-fe/osui/tree/master/commits/8397faa4f3ef7ba289a718ffab3852c8b97adcb8))
+* 补齐antd组件, 补齐文档 ([b6c76a8](https://gitee.com/gitee-fe/osui/tree/master/commits/b6c76a864b121479e151a97e926546f3370d0aed))
+
+
+### Features
+
+* 补充antd组件 ([7ef201d](https://gitee.com/gitee-fe/osui/tree/master/commits/7ef201df7efb9b3bbc0597fac45962c49c13533c))
+
+
+### Reverts
+
+* Revert "dev: 只发布不build" ([22cd177](https://gitee.com/gitee-fe/osui/tree/master/commits/22cd17762124b85b23bc3c7450582ce86be103fe))
+
+
+
+
+
 ## [3.0.4](https://gitee.com/gitee-fe/osui/tree/master/compare/v3.0.1...v3.0.4) (2024-01-23)
 
 
