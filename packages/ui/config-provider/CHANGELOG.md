@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.5-alpha.1 (2024-02-01)
+
+
+### Bug Fixes
+
+* [acud] message调整 ([2bc7cda](https://gitee.com/gitee-fe/osui/tree/master/commits/2bc7cda331b2831385ccf5ccf8c219c8f1b51b16))
+* @osui/icons调整icon名称，如下： ([8b9033a](https://gitee.com/gitee-fe/osui/tree/master/commits/8b9033af14f14ebae853692523739ca22c64123a))
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+* 修复typescript 类型错误 ([f18efab](https://gitee.com/gitee-fe/osui/tree/master/commits/f18efab2a15a47cc163dceba128b521c5522063f))
+* 升级antd到4.18.4,但是现在table exapandable和rowSelection的顺序有问题 ([f7af7bb](https://gitee.com/gitee-fe/osui/tree/master/commits/f7af7bbad5ed53099f4cc4c97c5852e631846616))
+* 升级antd到4.21.3, 清除一些不必要的组件 ([e582467](https://gitee.com/gitee-fe/osui/tree/master/commits/e58246764a8309a964b86f26fa229242d9241173))
+* 补齐antd组件, 补齐文档 ([b6c76a8](https://gitee.com/gitee-fe/osui/tree/master/commits/b6c76a864b121479e151a97e926546f3370d0aed))
+* 调整message ([1d750c1](https://gitee.com/gitee-fe/osui/tree/master/commits/1d750c1252d0f7eee445ca160f70b80cea57a263))
+
+
+
+
+
 ## 3.0.5-alpha.0 (2024-01-31)
 
 

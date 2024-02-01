@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.5-alpha.1 (2024-02-01)
+
+
+### Bug Fixes
+
+* auto-complete增加highlightKeyword属性 ([d10db83](https://gitee.com/gitee-fe/osui/tree/master/commits/d10db83a6aa2896d24dc5df5d1191a1770a95017))
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+* 修复typescript 类型错误 ([f18efab](https://gitee.com/gitee-fe/osui/tree/master/commits/f18efab2a15a47cc163dceba128b521c5522063f))
+* 升级antd到4.18.4,但是现在table exapandable和rowSelection的顺序有问题 ([f7af7bb](https://gitee.com/gitee-fe/osui/tree/master/commits/f7af7bbad5ed53099f4cc4c97c5852e631846616))
+* 升级antd到4.21.3, 清除一些不必要的组件 ([e582467](https://gitee.com/gitee-fe/osui/tree/master/commits/e58246764a8309a964b86f26fa229242d9241173))
+
+
+### Features
+
+* 新增highlight-text组件 ([7c655eb](https://gitee.com/gitee-fe/osui/tree/master/commits/7c655ebec50e226c240aabca62667d264fa00e5a))
+
+
+
+
+
 ## 3.0.5-alpha.0 (2024-01-31)
 
 
