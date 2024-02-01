@@ -43,6 +43,10 @@ export const Demo = () => {
     } = theme.useToken();
     const [collapsible, setCollapsible] = useState(true);
     const [newCollapseStyle, setNewCollapseStyle] = useState(false);
+    const [useCustomTrigger, setUseCustomTrigger] = useState(false);
+    const [collapsed, setCollapsed] = useState(false);
+    const style = {fontSize: 8, width: 16};
+    const trigger = collapsed ? <div style={style}>展开</div> : <div style={style}>收起</div>;
     return (
         <BrandProvider>
             <Layout>
@@ -63,6 +67,8 @@ export const Demo = () => {
                         style={{background: colorBgContainer}}
                         newCollapseStyle={newCollapseStyle}
                         collapsible={collapsible}
+                        trigger={useCustomTrigger && trigger}
+                        onCollapse={setCollapsed}
                     >
                         <Menu
                             mode="inline"
@@ -90,6 +96,7 @@ export const Demo = () => {
                         >
                             <button onClick={() => setCollapsible(v => !v)}>切换可收起状态</button>
                             <button onClick={() => setNewCollapseStyle(v => !v)}>切换新旧收起样式</button>
+                            <button onClick={() => setUseCustomTrigger(v => !v)}>切换是否使用自定义trigger</button>
                         </Content>
                     </Layout>
                 </Layout>
