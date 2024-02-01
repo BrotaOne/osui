@@ -48,9 +48,7 @@ const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
             : {};
 
     const handleSetCollapsed = (value: boolean, type: CollapseType) => {
-        if (!('collapsed' in props)) {
-            setCollapsed(value);
-        }
+        setCollapsed(value);
         onCollapse?.(value, type);
     };
 
