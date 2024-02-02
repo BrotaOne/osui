@@ -5,6 +5,7 @@ import Menu from '@osui/menu';
 import type {MenuProps} from 'antd';
 import {Breadcrumb, theme} from 'antd';
 import Layout from '../src';
+// import { Layout } from 'antd';
 
 export default {
     title: '布局/Layout 布局',
@@ -42,7 +43,7 @@ export const Demo = () => {
         token: {colorBgContainer, borderRadiusLG},
     } = theme.useToken();
     const [collapsible, setCollapsible] = useState(true);
-    const [newCollapseStyle, setNewCollapseStyle] = useState(false);
+    const [newCollapseStyle, setNewCollapseStyle] = useState(true);
     const [useCustomTrigger, setUseCustomTrigger] = useState(false);
     const [collapsed, setCollapsed] = useState(false);
     const style = newCollapseStyle ? {fontSize: 10, marginLeft: -12, color: '#000'} : {};
@@ -51,7 +52,7 @@ export const Demo = () => {
         <BrandProvider>
             <Layout>
                 <Header style={{display: 'flex', alignItems: 'center'}}>
-                    <div className="demo-logo" />
+                    <div className="demo-logo" style={{color: '#fff'}}>测试sider收缩样式</div>
                     <Menu
                         theme="dark"
                         mode="horizontal"
@@ -94,9 +95,21 @@ export const Demo = () => {
                                 borderRadius: borderRadiusLG,
                             }}
                         >
-                            <button onClick={() => setCollapsible(v => !v)}>切换可收起状态</button>
-                            <button onClick={() => setNewCollapseStyle(v => !v)}>切换新旧收起样式</button>
-                            <button onClick={() => setUseCustomTrigger(v => !v)}>切换是否使用自定义trigger</button>
+                            <button
+                                onClick={() => setCollapsible(v => !v)}
+                            >
+                                切换{!collapsible ? '' : '不'}可收起状态
+                            </button>
+                            <button
+                                onClick={() => setNewCollapseStyle(v => !v)}
+                            >
+                                切换{!newCollapseStyle ? '新' : '旧'}收起样式
+                            </button>
+                            <button
+                                onClick={() => setUseCustomTrigger(v => !v)}
+                            >
+                                切换{!useCustomTrigger ? '' : '不'}使用自定义trigger
+                            </button>
                         </Content>
                     </Layout>
                 </Layout>
