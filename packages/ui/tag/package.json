@@ -1,6 +1,6 @@
 {
     "name": "@osui/tag",
-    "version": "3.0.1",
+    "version": "3.0.5-alpha.0",
     "description": "",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -35,10 +35,10 @@
         "@emotion/babel-preset-css-prop": "^11.2.0",
         "@emotion/react": "^11.8.1",
         "@emotion/styled": "^11.8.1",
-        "@osui/brand-provider": "^3.0.1",
-        "@osui/icloud-theme": "^3.0.2",
-        "@osui/icons": "^3.0.1",
-        "@osui/theme": "^3.0.2",
+        "@osui/brand-provider": "^3.0.5-alpha.0",
+        "@osui/icloud-theme": "^3.0.5-alpha.0",
+        "@osui/icons": "^3.0.5-alpha.0",
+        "@osui/theme": "^3.0.5-alpha.0",
         "@storybook/addon-docs": "^7.5.1",
         "@storybook/addon-essentials": "^7.5.1",
         "@storybook/addon-interactions": "^7.5.1",
@@ -57,14 +57,9 @@
         "@types/react-dom": "^17.0.2",
         "@types/react-test-renderer": "^17.0.1",
         "ClockCircleOutlined": "link:@ant-design/icons/ClockCircleOutlined",
-        "antd": "^5.8.6",
-        "babel-loader": "^8.1.0",
-        "babel-merge": "^3.0.0",
+        "antd": "^5.12.5",
         "cpy-cli": "^3.1.1",
         "enzyme": "^3.11.0",
-        "eslint": "^8.0.0",
-        "eslint-plugin-storybook": "^0.6.15",
-        "husky": "^4.2.5",
         "identity-obj-proxy": "^3.0.0",
         "immer": "^9.0.12",
         "jest": "^27.0.6",
@@ -85,7 +80,7 @@
         "vite": "^4.5.0"
     },
     "peerDependencies": {
-        "@osui/icons": "^2.1.0",
+        "@osui/icons": "^3.0.0",
         "antd": "^5.0.0",
         "react": ">=17.0.0",
         "react-dom": ">=17.0.0"
@@ -97,9 +92,9 @@
     "author": "huoyuxuan",
     "license": "MIT",
     "dependencies": {
-        "@osui/divider": "^3.0.1",
-        "@osui/input": "^3.0.1",
-        "@osui/tooltip": "^3.0.1",
+        "@osui/divider": "^3.0.5-alpha.0",
+        "@osui/input": "^3.0.5-alpha.0",
+        "@osui/tooltip": "^3.0.5-alpha.0",
         "classnames": "^2.3.1"
     },
     "publishConfig": {
@@ -107,10 +102,5 @@
         "registry": "https://registry.npmjs.com"
     },
     "gitHead": "a9b8eb0a08430c6a35bd7f6553c3e583021eb96f",
-    "packageManager": "pnpm@7.14.2",
-    "eslintConfig": {
-        "extends": [
-            "plugin:storybook/recommended"
-        ]
-    }
+    "packageManager": "pnpm@8.10.2"
 }

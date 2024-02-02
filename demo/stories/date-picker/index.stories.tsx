@@ -6,7 +6,9 @@ import Space from '@osui/space';
 import BrandProvider from '@osui/brand-provider';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import DatePicker from '@osui/date-picker';
+
 const {RangePicker, WeekPicker} = DatePicker;
+
 dayjs.extend(customParseFormat);
 
 const dateFormat = 'YYYY-MM-DD';

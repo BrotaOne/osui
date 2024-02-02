@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.5-alpha.0 (2024-01-31)
+
+
+### Bug Fixes
+
+* @osui/icons调整icon名称，如下： ([8b9033a](https://gitee.com/gitee-fe/osui/tree/master/commits/8b9033af14f14ebae853692523739ca22c64123a))
+* datepicker导出完整属性 ([7349e2a](https://gitee.com/gitee-fe/osui/tree/master/commits/7349e2a7287e730ed7f73353162ff01bd9eb968e))
+* Datepicker类型修复 ([f0439f1](https://gitee.com/gitee-fe/osui/tree/master/commits/f0439f1edbadecec5ec4305b9309485db1b63ed7))
+* datepicker调整 ([85b1ec6](https://gitee.com/gitee-fe/osui/tree/master/commits/85b1ec62ddd111ad5ab37e63f3483520b156873b))
+* slider, date-picker icloud样式调整 ([c8983d9](https://gitee.com/gitee-fe/osui/tree/master/commits/c8983d9dbe90af5406e528e6b68f52677d320408))
+* 修复date-picker RangePicker的className ([b227b8d](https://gitee.com/gitee-fe/osui/tree/master/commits/b227b8deaccb8dc4335c371675f3ccbebcf55b10))
+* 修复date-picker suffix color ([fa1ff3c](https://gitee.com/gitee-fe/osui/tree/master/commits/fa1ff3cd4cbf3e9f77cfce0850e28048f1d2dbcd))
+* 修复Datepicker的类型,build时失败 ([9c8ef2e](https://gitee.com/gitee-fe/osui/tree/master/commits/9c8ef2eb0294b1f7bfe8d302bebaaaa4c94dd998))
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+* 修复typescript 类型错误 ([f18efab](https://gitee.com/gitee-fe/osui/tree/master/commits/f18efab2a15a47cc163dceba128b521c5522063f))
+* 升级antd到4.18.4,但是现在table exapandable和rowSelection的顺序有问题 ([f7af7bb](https://gitee.com/gitee-fe/osui/tree/master/commits/f7af7bbad5ed53099f4cc4c97c5852e631846616))
+* 升级antd到4.21.3, 清除一些不必要的组件 ([e582467](https://gitee.com/gitee-fe/osui/tree/master/commits/e58246764a8309a964b86f26fa229242d9241173))
+* 增加author ([dabbc23](https://gitee.com/gitee-fe/osui/tree/master/commits/dabbc23ddf453a1184833f6d784c36f567b2532e))
+* 对组件增加类型导出 ([36160d1](https://gitee.com/gitee-fe/osui/tree/master/commits/36160d14e8fee068f34d363d529345d95cfbd39e))
+* 文档title调整; icloud-theme调整; 组件size调整 ([7453a43](https://gitee.com/gitee-fe/osui/tree/master/commits/7453a437fb419db875709b32f934ba9e3454f895))
+* 样式修复 ([4d6a435](https://gitee.com/gitee-fe/osui/tree/master/commits/4d6a435d8619434d977ea4988b2aa8474f90ce59))
+* 调整dropdown和menu ([35d503f](https://gitee.com/gitee-fe/osui/tree/master/commits/35d503fb44fbc74c851809c07ea5695280e95bb1))
+* 颜色调整, radio调整 ([385419f](https://gitee.com/gitee-fe/osui/tree/master/commits/385419f7bad6483fcef158f6afce33b846d084b9))
+
+
+### Features
+
+* **datepicker:** 新增日期组件 ([33a831d](https://gitee.com/gitee-fe/osui/tree/master/commits/33a831dee8c0e6f46eef039e1abe160c7147cbdc))
+* less支持ant-prefix变量 ([7c0bfee](https://gitee.com/gitee-fe/osui/tree/master/commits/7c0bfee0ef97d48d62cd58c448c26d146101c6c7))
+
+
+
+
+
+## [3.0.4](https://gitee.com/gitee-fe/osui/tree/master/compare/v3.0.1...v3.0.4) (2024-01-23)
+
+
+### Bug Fixes
+
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+
+
+
+
+
+## [3.0.3](https://gitee.com/gitee-fe/osui/tree/master/compare/v2.1.8...v3.0.3) (2023-12-28)
+
+
+### Bug Fixes
+
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+* 修复typescript 类型错误 ([f18efab](https://gitee.com/gitee-fe/osui/tree/master/commits/f18efab2a15a47cc163dceba128b521c5522063f))
+* 调整dropdown和menu ([35d503f](https://gitee.com/gitee-fe/osui/tree/master/commits/35d503fb44fbc74c851809c07ea5695280e95bb1))
+
+
+
+
+
 ## [3.0.1](https://gitee.com/gitee-fe/osui/tree/master/compare/v2.1.8...v3.0.1) (2023-09-25)
 
 
