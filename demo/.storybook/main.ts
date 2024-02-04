@@ -1,6 +1,5 @@
 import {join, dirname} from 'path';
-// import genConfig from '../../storybookbase/main';
-import genConfig from '../../packages/storybookbase/main';
+import genConfig from '../../storybookbase/main';
 
 /**
  * This function is used to resolve the absolute path of a package.
