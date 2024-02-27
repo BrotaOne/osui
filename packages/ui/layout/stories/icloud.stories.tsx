@@ -5,6 +5,7 @@ import Menu from '@osui/menu';
 import type {MenuProps} from 'antd';
 import {Breadcrumb, theme} from 'antd';
 import Layout from '../src';
+// import { Layout } from 'antd';
 
 export default {
     title: '布局/Layout 布局',
@@ -42,16 +43,25 @@ export const Demo = () => {
         token: {colorBgContainer, borderRadiusLG},
     } = theme.useToken();
     const [collapsible, setCollapsible] = useState(true);
-    const [newCollapseStyle, setNewCollapseStyle] = useState(false);
+    const [newCollapseStyle, setNewCollapseStyle] = useState(true);
     const [useCustomTrigger, setUseCustomTrigger] = useState(false);
     const [collapsed, setCollapsed] = useState(false);
-    const style = newCollapseStyle ? {fontSize: 10, marginLeft: -12, color: '#000'} : {};
+    const [cssVar, setCssVar] = useState(false);
+    const style = newCollapseStyle ? {
+        fontSize: 10, marginLeft: -12, color: '#fff', margin: '0 auto',
+    } : {};
     const trigger = collapsed ? <div style={style}>展开</div> : <div style={style}>收起</div>;
+    const themeVar = {
+        cssVar: cssVar && {
+            prefix: 'ant',
+            key: 'default',
+        },
+    };
     return (
-        <BrandProvider>
+        <BrandProvider theme={themeVar}>
             <Layout>
                 <Header style={{display: 'flex', alignItems: 'center'}}>
-                    <div className="demo-logo" />
+                    <div className="demo-logo" style={{color: '#fff'}}>测试sider收缩样式</div>
                     <Menu
                         theme="dark"
                         mode="horizontal"
@@ -87,16 +97,35 @@ export const Demo = () => {
                         </Breadcrumb>
                         <Content
                             style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                columnGap: 12,
                                 padding: 24,
-                                margin: 0,
-                                minHeight: 280,
                                 background: colorBgContainer,
                                 borderRadius: borderRadiusLG,
                             }}
                         >
-                            <button onClick={() => setCollapsible(v => !v)}>切换可收起状态</button>
-                            <button onClick={() => setNewCollapseStyle(v => !v)}>切换新旧收起样式</button>
-                            <button onClick={() => setUseCustomTrigger(v => !v)}>切换是否使用自定义trigger</button>
+                            <button
+                                onClick={() => setCollapsible(v => !v)}
+                            >
+                                切换{!collapsible ? '' : '不'}可收起状态
+                            </button>
+                            <button
+                                onClick={() => setNewCollapseStyle(v => !v)}
+                            >
+                                切换{!newCollapseStyle ? '新' : '旧'}收起样式
+                            </button>
+                            <button
+                                onClick={() => setUseCustomTrigger(v => !v)}
+                            >
+                                切换{!useCustomTrigger ? '' : '不'}使用自定义trigger
+                            </button>
+
+                            <button
+                                onClick={() => setCssVar(v => !v)}
+                            >
+                                切换{!cssVar ? '' : '不'}使用cssVar
+                            </button>
                         </Content>
                     </Layout>
                 </Layout>

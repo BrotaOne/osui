@@ -1,13 +1,17 @@
-import React from 'react';
-import {Button as AntdButton} from 'antd';
+import React, {useContext} from 'react';
+import {Button as AntdButton, ConfigProvider} from 'antd';
 import {ButtonProps as AntdButtonProps, ButtonType} from 'antd/es/button';
 import classNames from 'classnames';
 import {IconLoading3QuartersOutlined} from '@osui/icons';
 import Tooltip from '@osui/tooltip';
-import './index.less';
+import {theme} from 'antd';
+import {useBrandContext} from '@osui/brand-provider';
+import {useStyleRegister, useCacheToken} from '@ant-design/cssinjs';
+import {genButtonStyle, prepareComponentToken} from './style';
+// import './index.less';
 
 const clsPrefix = 'osui-button';
-
+const {useToken} = theme;
 type MinWidthProp = string|number|boolean;
 export interface ButtonProps extends Omit<AntdButtonProps, 'type'> {
     type?: ButtonType | 'strong' | 'icon';
@@ -85,9 +89,31 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (
     const loadingProp = (typeof loading === 'object') ? {loading} : {};
     const isLoading = typeof loading === 'boolean' && loading;
 
+    const {getPrefixCls} = useContext(ConfigProvider.ConfigContext);
+    const prefixCls = getPrefixCls('layout-sider', props.prefixCls);
+    const outTheme = useBrandContext();
+    const cssVar = outTheme.designToken?.cssVar;
+    const {token: outerToken, theme, hashId} = useToken();
+    const [token] = useCacheToken(
+        theme,
+        [prepareComponentToken(outerToken)],
+        {
+            cssVar: !cssVar
+                ? undefined
+                : cssVar === true
+                    ? {prefix: 'ant'}
+                    : cssVar,
+        }
+    );
+    const wrapCSSVar = useStyleRegister(
+        {theme, token, hashId, path: [prefixCls]},
+        () => [
+            genButtonStyle(prefixCls, token, cssVar, clsPrefix),
+        ]
+    );
     if (type === 'icon') {
         // icon作为button
-        return (<PureIconButton loading={isLoading} icon={icon} disabled={disabled} {...props} />);
+        return wrapCSSVar(<PureIconButton loading={isLoading} icon={icon} disabled={disabled} {...props} />);
     }
 
     // icon在作为children
@@ -157,14 +183,14 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (
     );
 
     if (disabledReason && disabled) {
-        return (
+        return wrapCSSVar(
             <Tooltip placement="top" title={disabledReason}>
                 {PatchedButton}
             </Tooltip>
         );
     }
 
-    return PatchedButton;
+    return wrapCSSVar(PatchedButton);
 };
 
 const Button = React.forwardRef<any, ButtonProps>(InternalButton) as ButtonInterface;

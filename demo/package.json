@@ -65,7 +65,9 @@
     "ts-jest": "^27.1.5",
     "typescript": "^4.8.2",
     "vite": "^4.5.0",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "less": "^4.1.3",
+    "dayjs": "^1.11.7"
   },
   "repository": {
     "type": "git",
@@ -152,8 +154,9 @@
     "@osui/version": "latest",
     "antd": "5.4.7",
     "classnames": "^2.3.1",
+    "globby": "^13.1.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2"  
   },
   "type": "module"
 }

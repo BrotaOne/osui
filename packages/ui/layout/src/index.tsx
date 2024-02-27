@@ -1,10 +1,20 @@
-import {Layout as AntdLayout, type SiderProps as AntdSiderProps} from 'antd';
-export type {LayoutProps} from 'antd';
+import {
+    Layout as AntdLayout,
+    type SiderProps as AntdSiderProps,
+    ConfigProvider,
+} from 'antd';
+export {type LayoutProps} from 'antd';
 import {type CollapseType} from 'antd/es/layout/Sider';
+import {theme} from 'antd';
 import InternalLayout from 'antd/es/layout/layout';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {IconCaretDownOutlined} from '@osui/icons';
-import './index.less';
+import {useBrandContext} from '@osui/brand-provider';
+import {useStyleRegister, useCacheToken} from '@ant-design/cssinjs';
+import {genStyle, prepareComponentToken} from './style';
+// import './index.less';
+
+const {useToken} = theme;
 
 type SiderProps = AntdSiderProps & {
     newCollapseStyle: boolean;
@@ -21,12 +31,35 @@ const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
     {newCollapseStyle = false, className, trigger: triggerIn, onCollapse, ...props},
     ref
 ) => {
+    const {getPrefixCls} = useContext(ConfigProvider.ConfigContext);
+    const prefixCls = getPrefixCls('layout-sider', props.prefixCls);
+    const outTheme = useBrandContext();
+    const cssVar = outTheme.designToken?.cssVar;
+    const {token: outerToken, theme, hashId} = useToken();
+    const [token] = useCacheToken(
+        theme,
+        [prepareComponentToken(outerToken)],
+        {
+            cssVar: !cssVar
+                ? undefined
+                : cssVar === true
+                    ? {prefix: 'ant'}
+                    : cssVar,
+        }
+    );
+    const wrapCSSVar = useStyleRegister(
+        {theme, token, hashId, path: [prefixCls]},
+        () => [
+            genStyle(prefixCls, token, cssVar, clsPrefix),
+        ]
+    );
     const [collapsed, setCollapsed] = useState(
         'collapsed' in props ? props.collapsed : props.defaultCollapsed
     );
     const finaleClassName = [
         className ? className : '',
-        newCollapseStyle ? ` ${clsPrefix}-new-collapse-style` : '',
+        newCollapseStyle && ! triggerIn ? ` ${clsPrefix}-new-collapse-style` : '',
+        hashId,
     ].filter(v => v).join(' ');
 
     const collapsedWidth = newCollapseStyle
@@ -36,14 +69,13 @@ const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
             : {}
         );
 
-    const triggerInnerClassName = `${clsPrefix}-sider-item`
-        + (collapsed ? ` ${clsPrefix}-sider-item-collapse` : '');
+    const triggerInnerClassName = `${clsPrefix}-item`
+        + (collapsed ? ` ${clsPrefix}-item-collapse` : '');
 
     const trigger = triggerIn ? {trigger: triggerIn}
         : newCollapseStyle
             ? {
-                trigger:
-                <IconCaretDownOutlined className={triggerInnerClassName} />,
+                trigger: <IconCaretDownOutlined className={triggerInnerClassName} />,
             }
             : {};
 
@@ -52,7 +84,7 @@ const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
         onCollapse?.(value, type);
     };
 
-    return (
+    return wrapCSSVar(
         <AntdLayout.Sider
             {...props}
             ref={ref}
