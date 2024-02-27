@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@osui/icons-builder",
-  "version": "3.0.5-alpha.1",
+  "version": "3.0.5-alpha.2",
   "description": "Icons for OSUI",
   "files": [
     "src/"
