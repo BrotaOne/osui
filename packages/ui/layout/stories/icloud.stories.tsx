@@ -46,10 +46,19 @@ export const Demo = () => {
     const [newCollapseStyle, setNewCollapseStyle] = useState(true);
     const [useCustomTrigger, setUseCustomTrigger] = useState(false);
     const [collapsed, setCollapsed] = useState(false);
-    const style = newCollapseStyle ? {fontSize: 10, marginLeft: -12, color: '#000'} : {};
+    const [cssVar, setCssVar] = useState(false);
+    const style = newCollapseStyle ? {
+        fontSize: 10, marginLeft: -12, color: '#fff', margin: '0 auto',
+    } : {};
     const trigger = collapsed ? <div style={style}>展开</div> : <div style={style}>收起</div>;
+    const themeVar = {
+        cssVar: cssVar && {
+            prefix: 'ant',
+            key: 'default',
+        },
+    };
     return (
-        <BrandProvider>
+        <BrandProvider theme={themeVar}>
             <Layout>
                 <Header style={{display: 'flex', alignItems: 'center'}}>
                     <div className="demo-logo" style={{color: '#fff'}}>测试sider收缩样式</div>
@@ -88,9 +97,10 @@ export const Demo = () => {
                         </Breadcrumb>
                         <Content
                             style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                columnGap: 12,
                                 padding: 24,
-                                margin: 0,
-                                minHeight: 280,
                                 background: colorBgContainer,
                                 borderRadius: borderRadiusLG,
                             }}
@@ -109,6 +119,12 @@ export const Demo = () => {
                                 onClick={() => setUseCustomTrigger(v => !v)}
                             >
                                 切换{!useCustomTrigger ? '' : '不'}使用自定义trigger
+                            </button>
+
+                            <button
+                                onClick={() => setCssVar(v => !v)}
+                            >
+                                切换{!cssVar ? '' : '不'}使用cssVar
                             </button>
                         </Content>
                     </Layout>

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, {useState} from 'react';
 import {IconHomeOutlined, IconPlusOutlined, IconLeftOutlined} from '@osui/icons';
 import Markdown from '@osui/markdown';
 import Divider from '@osui/divider';
@@ -30,13 +30,25 @@ export default {
 };
 
 export const Demo = () => {
+    const [cssVar, setCssVar] = useState(false);
+    const theme = {
+        cssVar: cssVar && {
+            prefix: 'ant',
+            key: 'default',
+        },
+    };
     return (
-        <BrandProvider>
+        <BrandProvider theme={theme}>
             <Blockquote>
                 UE要求两个字时中间没有空格，通过antd ConfigProvider来配置autoInsertSpaceInButton: false。
                 <br />
                 <strong>注意</strong>Button loading自动添加了flexedCenter，当作为button组时，需要外面裹一下div flex center
             </Blockquote>
+            <button
+                onClick={() => setCssVar(v => !v)}
+            >
+                切换{!cssVar ? '' : '不'}使用cssVar
+            </button>
             <Divider>展示</Divider>
             <h3><b>1、普通按钮</b></h3>
             <p>普通样式</p>
