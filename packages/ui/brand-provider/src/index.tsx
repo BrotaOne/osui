@@ -2,7 +2,7 @@ import React, {
     useContext, useState, useEffect,
     useRef, useCallback,
 } from 'react';
-import {ConfigProvider, ThemeConfig} from 'antd';
+import {ConfigProvider, ThemeConfig, App} from 'antd';
 import Empty from '@osui/empty';
 import zhCN from 'antd/locale/zh_CN';
 import {ConfigProviderProps} from 'antd/es/config-provider';
@@ -103,7 +103,9 @@ const BrandProvider: React.FC<React.PropsWithChildren<{
     return (
         <BrandContext.Provider value={context}>
             <ConfigProvider {...iCloudConfigs} {...ConfigProviderProps} theme={finalTheme}>
-                {children}
+                <App>
+                    {children}
+                </App>
             </ConfigProvider>
         </BrandContext.Provider>
     );
