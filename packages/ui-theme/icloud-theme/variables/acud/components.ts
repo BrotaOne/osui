@@ -11,7 +11,7 @@ export default {
     '--alert-info-icon-color': 'var(--color-brand-6)',
     '--alert-message-color': 'var(--theme-heading-color)',
     '--alert-no-icon-padding': '6px 16px',
-    '--alert-padding': '6px 10px 6px 38px',
+    '--alert-padding': '6px 10px 6px 14px',
     '--alert-success-bg-color': 'var(--color-success-1)',
     '--alert-success-border-color': 'var(--color-success-1)',
     '--alert-success-icon-color': 'var(--theme-success-color)',
