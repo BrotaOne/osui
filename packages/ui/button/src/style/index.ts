@@ -35,7 +35,7 @@ const buttonColorMixin: any = (
 });
 
 const genButtonTypesStyle = () => {
-    const buttonTypes = ['strong', 'primary', 'link', 'text', 'icon'];
+    const buttonTypes = ['icon', 'strong', 'primary', 'link', 'text'];
 
     return buttonTypes.map(type => {
         // const Type = type[0].toUpperCase() + type.substring(1);
@@ -219,20 +219,20 @@ const genButtonFacesStyle = () => {
 const genStyle = () => {
     return {
         // 对error text link 的button处理
-        '.@{ant-prefix}-btn.@{ant-prefix}-btn-text': {
-            '&.@{osui-button-class-prefix}.@{osui-button-class-prefix}-face-error': {
+        [`.${antPrefix}-btn.${antPrefix}-btn-text`]: {
+            [`&.${osuiButtonClassPrefix}.${osuiButtonClassPrefix}-face-error`]: {
                 background: 'transparent',
             },
         },
-        '.@{ant-prefix}-btn.@{ant-prefix}-btn-link': {
-            '&.@{osui-button-class-prefix}.@{osui-button-class-prefix}-face-error': {
+        [`.${antPrefix}-btn.${antPrefix}-btn-link`]: {
+            [`&.${osuiButtonClassPrefix}.${osuiButtonClassPrefix}-face-error`]: {
                 background: 'transparent',
             },
         },
 
         // ghost
-        '.@{ant-prefix}-btn.@{ant-prefix}-btn-background-ghost': {
-            '&.@{osui-button-class-prefix}': {
+        [`.${antPrefix}-btn.${antPrefix}-btn-background-ghost`]: {
+            [`&.${osuiButtonClassPrefix}`]: {
                 color: 'var(--theme-component-bg)',
                 background: 'transparent',
                 borderColor: 'var(--theme-component-bg)',
@@ -256,16 +256,16 @@ const genStyle = () => {
             },
         },
 
-        '.@{osui-button-class-prefix}': {
+        [`.${osuiButtonClassPrefix}`]: {
             '&-flex-center': {
                 display: 'inline-flex',
                 alignItems: 'center',
             },
-            '&-flex-center.@{ant-prefix}-btn': {
+            [`&-flex-center.${antPrefix}-btn`]: {
                 display: 'inline-flex',
                 alignItems: 'center',
             },
-            '&-flex-center .@{ant-prefix}-btn': {
+            [`&-flex-center .${antPrefix}-btn`]: {
                 display: 'inline-flex',
                 alignItems: 'center',
             },
@@ -274,7 +274,7 @@ const genStyle = () => {
                 marginLeft: '4px',
             },
 
-            '&.@{ant-prefix}-btn': {
+            [`&.${antPrefix}-btn`]: {
                 transition: 'none',
             },
 
@@ -283,7 +283,7 @@ const genStyle = () => {
                 display: 'var(--btn-loading-text-display)',
             },
 
-            '&.@{ant-prefix}-btn-link': {
+            [`&.${antPrefix}-btn-link`]: {
                 height: 'auto',
                 margin: 'var(--btn-link-margin)',
                 padding: 'var(--btn-link-padding)',
@@ -293,7 +293,7 @@ const genStyle = () => {
                     textDecoration: 'var(--btn-link-text-decoration)',
                 },
             },
-            '&.@{ant-prefix}-btn-text': {
+            [`&.${antPrefix}-btn-text`]: {
                 height: 'auto',
                 margin: 'var(--btn-link-margin)',
                 padding: 'var(--btn-link-padding)',
@@ -305,24 +305,24 @@ const genStyle = () => {
             },
 
             // 只有icon的时候居中icon
-            '&.@{ant-prefix}-btn-icon-only': {
+            [`&.${antPrefix}-btn-icon-only`]: {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
             },
 
             // 去掉primary的box-shadow
-            '&.@{ant-prefix}-btn-primary': {
+            [`&.${antPrefix}-btn-primary`]: {
                 boxShadow: 'none',
             },
 
-            '&.@{ant-prefix}-btn::before': {
+            [`&.${antPrefix}-btn::before`]: {
                 opacity: 0,
             },
         },
 
         // 仅icon形式
-        '.@{osui-button-class-prefix}-btn-icon': {
+        [`.${osuiButtonClassPrefix}-btn-icon`]: {
             cursor: 'pointer',
 
             ...buttonColorMixin(
@@ -361,7 +361,7 @@ const genStyle = () => {
             '&[disabled]': {
                 cursor: 'not-allowed',
 
-                '&.@{osui-button-class-prefix}-icon-spinner': {
+                [`&.${osuiButtonClassPrefix}-icon-spinner`]: {
                     color: 'var(--theme-primary-color)',
                 },
 
@@ -373,7 +373,7 @@ const genStyle = () => {
                 ),
             },
 
-            '&.@{osui-button-class-prefix}-loading': buttonColorMixin(
+            [`&.${osuiButtonClassPrefix}-loading`]: buttonColorMixin(
                 'var(--btn-icon-loading-color)',
                 'var(--btn-icon-loading-bg)',
                 'var(--btn-icon-loading-border-color)',
@@ -382,14 +382,14 @@ const genStyle = () => {
         },
 
         // revert antd不太正常的修复 https://github.com/ant-design/ant-design/issues/12978
-        'a.@{osui-button-class-prefix}': {
-            '&.@{ant-prefix}-btn': {
+        [`a.${osuiButtonClassPrefix}`]: {
+            [`&.${antPrefix}-btn`]: {
                 paddingTop: 0,
                 paddingBottom: 0,
             },
         },
 
-        '.@{ant-prefix}-btn.@{ant-prefix}-btn-sm': {
+        [`.${antPrefix}-btn.${antPrefix}-btn-sm`]: {
             padding: '2px 11px',
         },
     };

@@ -90,7 +90,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (
     const isLoading = typeof loading === 'boolean' && loading;
 
     const {getPrefixCls} = useContext(ConfigProvider.ConfigContext);
-    const prefixCls = getPrefixCls('layout-sider', props.prefixCls);
+    const prefixCls = getPrefixCls('ant-button', props.prefixCls);
     const outTheme = useBrandContext();
     const cssVar = outTheme.designToken?.cssVar;
     const {token: outerToken, theme, hashId} = useToken();
