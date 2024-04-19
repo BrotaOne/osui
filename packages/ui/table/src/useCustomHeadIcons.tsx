@@ -4,8 +4,7 @@ import {
     IconFilterOutlined,
     IconTableSortOutlined,
 } from '@osui/icons';
-import ArrowDownOutlined from '@ant-design/icons/ArrowDownOutlined';
-import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined';
+import {ArrowDownOutlined, ArrowUpOutlined} from '@ant-design/icons';
 import classNames from 'classnames';
 
 const clsPrefix = 'osui-table';

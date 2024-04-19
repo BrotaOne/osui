@@ -5,7 +5,7 @@ import Input from '@osui/input';
 import Tooltip from '@osui/tooltip';
 import {PlusOutlined} from '@ant-design/icons';
 import {IconPlusOutlined} from '@osui/icons';
-import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
+import {ClockCircleOutlined} from '@ant-design/icons';
 import styled from '@emotion/styled';
 import BrandProvider from '@osui/brand-provider';
 import Tag from '@osui/tag';

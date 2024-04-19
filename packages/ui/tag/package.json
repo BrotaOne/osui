@@ -27,7 +27,7 @@
         "es/*.less"
     ],
     "devDependencies": {
-        "@ant-design/icons": "^4.7.0",
+        "@ant-design/icons": "^5.0.0",
         "@babel/cli": "^7.10.5",
         "@babel/preset-env": "^7.10.4",
         "@babel/preset-react": "^7.10.4",
@@ -56,7 +56,6 @@
         "@types/jest": "^27.0.0",
         "@types/react-dom": "^17.0.2",
         "@types/react-test-renderer": "^17.0.1",
-        "ClockCircleOutlined": "link:@ant-design/icons/ClockCircleOutlined",
         "antd": "^5.12.5",
         "cpy-cli": "^3.1.1",
         "enzyme": "^3.11.0",

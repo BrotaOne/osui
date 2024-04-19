@@ -23,7 +23,7 @@
     "sb-upgrade": "sb upgrade"
   },
   "devDependencies": {
-    "@ant-design/icons": "^4.7.0",
+    "@ant-design/icons": "^5.0.0",
     "@babel/cli": "^7.18.10",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",

@@ -85,16 +85,14 @@ const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
     };
 
     return wrapCSSVar(
-        <AntdLayout>
-            <AntdLayout.Sider
-                {...props}
-                ref={ref}
-                className={finaleClassName}
-                {...collapsedWidth}
-                {...trigger}
-                onCollapse={handleSetCollapsed}
-            />
-        </AntdLayout>
+        <AntdLayout.Sider
+            {...props}
+            ref={ref}
+            className={finaleClassName}
+            {...collapsedWidth}
+            {...trigger}
+            onCollapse={handleSetCollapsed}
+        />
     );
 });
 
