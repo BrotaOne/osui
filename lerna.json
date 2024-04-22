@@ -9,8 +9,7 @@
     "version": {
       "allowBranch": [
         "hot-fix",
-        "v3",
-        "*"
+        "v3"
       ],
       "ignoreChanges": [
         "**/*.md",
