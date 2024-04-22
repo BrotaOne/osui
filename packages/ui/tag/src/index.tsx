@@ -40,7 +40,13 @@ const colorMap = {
 
 const Tag = React.forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     const {closeIcon, color, solid, round, outlined, disabled, ...restProps} = props;
-    const patchedIcon = closeIcon ?? <IconCloseOutlined />;
+    let patchedIcon = null;
+    if (closeIcon === false || closeIcon === undefined) {
+        patchedIcon = null;
+    }
+    else {
+        patchedIcon = <IconCloseOutlined />;
+    }
     const classnames = classNames(
         clsPrefix,
         {[`${clsPrefix}-solid`]: solid},

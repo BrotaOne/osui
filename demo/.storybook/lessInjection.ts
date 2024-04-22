@@ -1,4 +1,3 @@
-// copy from @reskript/config-webpack@6.0.3
 import fs from 'node:fs/promises';
 import {globby} from 'globby';
 import less from 'less';

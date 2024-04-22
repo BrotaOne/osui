@@ -3,6 +3,7 @@ import React from 'react';
 import {Row} from 'antd';
 import dayjs from 'dayjs';
 import Space from '@osui/space';
+import version from '@osui/version';
 import BrandProvider from '@osui/brand-provider';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import DatePicker from '../src';
@@ -20,6 +21,7 @@ export default {
 export const Demo = () => {
     return (
         <BrandProvider brand="icloud">
+            {version}
             <div style={{padding: 20}}>
                 <h1>日选择</h1>
                 <h4>日期选择</h4>

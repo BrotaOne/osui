@@ -1,10 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import BrandProvider from '@osui/brand-provider';
-import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
-
-dayjs.locale('zh-cn');
 import Calendar from '@osui/calendar';
 
 export default {
