@@ -4,8 +4,9 @@ import type {Reference} from 'rc-table';
 import classNames from 'classnames';
 import {useBrandContext} from '@osui/brand-provider';
 import {IconRightOutlined} from '@osui/icons';
+import Spin from '@osui/spin';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import {TableProps as AntdTableProps} from 'antd/es/table';
+import type {TableProps as AntdTableProps} from 'antd/es/table';
 import useCustomSortForCustomIcons from './useCustomHeadIcons';
 import useTablePaginationStylePatch from './useTablePaginationStylePatch';
 import './index.less';
@@ -85,6 +86,11 @@ function Table<RecordType extends Record<string, any>>(
 
     useImperativeHandle(ref, () => domRef.current!);
 
+    // overwrite loading
+    const innerLoading = props.loading ? (
+        typeof props.loading === 'boolean' ? {indicator: <Spin size="large" />} : props.loading
+    ) : props.loading;
+
     return (
         <div className={className} ref={containerDomRef}>
             <AntdTable
@@ -95,6 +101,7 @@ function Table<RecordType extends Record<string, any>>(
                 // todo 新方式疑似添加了expandIcon，就必须设置 expandedRowRender
                 expandIcon={props.expandIcon || osuiExpandIcon}
                 onChange={handleChange}
+                loading={innerLoading}
             />
         </div>
     );
