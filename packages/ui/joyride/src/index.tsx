@@ -105,6 +105,9 @@ export interface JoyrideProps extends DefaultJoyrideProps {
     hideStepsSize?: boolean;
 }
 
+/**
+ * @deprecated 推荐使用 Tour 组件，antd 原生
+ */
 const OSUIJoyride: React.FC<JoyrideProps> = props => {
     const {shouldRestart, run, onFinish, getHelpers, disableOverlayClose, hideStepsSize} = props;
     const [helpers, setHelpers] = React.useState<any>();
@@ -141,6 +144,11 @@ const OSUIJoyride: React.FC<JoyrideProps> = props => {
         },
         [getHelpers]
     );
+
+    if (process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+        console.warn('Joyride 组件已弃用，请使用 @osui/ui 的 Tour 组件');
+    }
+
     return (
         <Joyride
             {...props}

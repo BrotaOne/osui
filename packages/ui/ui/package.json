@@ -33,7 +33,7 @@
         "@reskript/cli-lint": "^6.0.0",
         "@reskript/config-babel": "^6.0.0",
         "@reskript/config-lint": "^6.0.0",
-        "@reskript/config-webpack": "^6.0.0",
+        "@storybook/react-vite": "^7.5.1",
         "@types/jest": "^27.0.0",
         "@types/react-test-renderer": "^17.0.1",
         "cpy-cli": "^3.1.1",
@@ -47,7 +47,7 @@
         "webpack": "^5.52.1"
     },
     "peerDependencies": {
-        "antd": ">=4.21.3",
+        "antd": "^5.0.0",
         "react": ">=17.0.0",
         "react-dom": ">=17.0.0"
     },
@@ -131,6 +131,9 @@
         "@osui/typography": "^3.1.0-alpha.2",
         "@osui/upload": "^3.1.0-alpha.2",
         "@osui/version": "^3.1.0-alpha.2",
+        "@osui/qr-code": "workspace",
+        "@osui/float-button": "workspace",
+        "@osui/color-picker": "workspace",
         "classnames": "^2.3.1",
         "github-markdown-css": "^4.0.0",
         "lodash.partial": "^4.2.1",

@@ -151,7 +151,7 @@
     "@osui/typography": "^3.1.0-alpha.2",
     "@osui/upload": "^3.1.0-alpha.2",
     "@osui/version": "^3.1.0-alpha.2",
-    "antd": "5.16.2",
+    "antd": "^5.16.2",
     "classnames": "^2.3.1",
     "dayjs": "^1.11.10",
     "globby": "^14.0.1",
