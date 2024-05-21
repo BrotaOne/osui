@@ -1,4 +1,9 @@
 import type {CSSObject} from '@ant-design/cssinjs';
+import {useBrandContext} from '@osui/brand-provider';
+import {useStyleRegister, useCacheToken} from '@ant-design/cssinjs';
+import {theme, ThemeConfig} from 'antd';
+
+const {useToken} = theme;
 
 export const prepareComponentToken: (token: any) => any = token => {
     const ret: any = {};
@@ -16,8 +21,6 @@ type CssVar = boolean | {
     key?: string | undefined;
 } | undefined;
 
-const osuiButtonClassPrefix = 'osui-button';
-const antPrefix = 'ant';
 
 const buttonColorMixin: any = (
     color: string,
@@ -34,376 +37,447 @@ const buttonColorMixin: any = (
     },
 });
 
-const genButtonTypesStyle = () => {
+// const tokoneName2VarName = (tokenName: string) => {
+//     const reg = new RegExp(/([aZ])([AZ])/g);
+//     const name = tokenName.replace(reg, function rename(match, one, two) {
+//         return one + '_' + two.toLowerCase()
+//     });
+
+//     return name;
+// }
+
+const genButtonTypesStyle = (
+    clsPrefix: string,
+    prefixCls: string,
+    token: Record<string, string>
+) => {
     const buttonTypes = ['icon', 'strong', 'primary', 'link', 'text'];
 
     return buttonTypes.map(type => {
-        // const Type = type[0].toUpperCase() + type.substring(1);
+        const Type = type[0].toUpperCase() + type.substring(1);
         const buttonStyle = {
             ...buttonColorMixin(
-                `var(--btn-${type}-color)`,
-                `var(--btn-${type}-bg)`,
-                `var(--btn-${type}-border-color)`,
-                `var(--btn-${type}-icon-color)`
+                token[`btn${Type}Color`],
+                token[`btn${Type}Bg`],
+                token[`btn${Type}BorderColor`],
+                token[`btn${Type}IconColor`]
             ),
 
             '&:focus': {
                 ...buttonColorMixin(
-                    `var(--btn-${type}-focus-color)`,
-                    `var(--btn-${type}-focus-bg)`,
-                    `var(--btn-${type}-focus-border-color)`,
-                    `var(--btn-${type}-focus-color)`
+                    token[`btn${Type}FocusColor`],
+                    token[`btn${Type}FocusBg`],
+                    token[`btn${Type}FocusBorderColor`],
+                    token[`btn${Type}FocusColor`]
                 ),
 
-                boxShadow: 'var(--theme-component-focus-box-shadow)',
+                boxShadow: token['themeComponentFocusBoxShadow'],
             },
 
             '&:hover':
                 buttonColorMixin(
-                    `var(--btn-${type}-hover-color)`,
-                    `var(--btn-${type}-hover-bg)`,
-                    `var(--btn-${type}-hover-border-color)`,
-                    `var(--btn-${type}-hover-color)`
+                    token[`btn${Type}HoverColor`],
+                    token[`btn${Type}HoverBg`],
+                    token[`btn${Type}HoverBorderColor`],
+                    token[`btn${Type}HoverColor`]
                 ),
 
 
             '&:active': buttonColorMixin(
-                `var(--btn-${type}-active-color)`,
-                `var(--btn-${type}-active-bg)`,
-                `var(--btn-${type}-active-border-color)`,
-                `var(--btn-${type}-active-color)`
+                token[`btn${Type}ActiveColor`],
+                token[`btn${Type}ActiveBg`],
+                token[`btn${Type}ActiveBorderColor`],
+                token[`btn${Type}ActiveColor`]
             ),
 
             '&[disabled]': buttonColorMixin(
-                `var(--btn-${type}-disable-color)`,
-                `var(--btn-${type}-disable-bg)`,
-                `var(--btn-${type}-disable-border-color)`,
-                `var(--btn-${type}-disable-color)`
+                token[`btn${Type}DisableColor`],
+                token[`btn${Type}DisableBg`],
+                token[`btn${Type}DisableBorderColor`],
+                token[`btn${Type}DisableColor`]
             ),
 
-            [`&.${osuiButtonClassPrefix}-loading`]: buttonColorMixin(
-                `var(--btn-${type}-loading-color)`,
-                `var(--btn-${type}-loading-bg)`,
-                `var(--btn-${type}-loading-border-color)`,
-                `var(--btn-${type}-loading-color)`
+            [`&.${clsPrefix}-loading`]: buttonColorMixin(
+                token[`btn${Type}LoadingColor`],
+                token[`btn${Type}LoadingBg`],
+                token[`btn${Type}LoadingBorderColor`],
+                token[`btn${Type}LoadingColor`]
             ),
 
         };
 
         return {
-            [`.${osuiButtonClassPrefix}.${antPrefix}-btn-${type}`]: buttonStyle,
-            [`.${osuiButtonClassPrefix} .${antPrefix}-btn-${type}`]: buttonStyle,
+            [`.${clsPrefix}.${prefixCls}-${type}`]: buttonStyle,
+            [`.${clsPrefix} .${prefixCls}-${type}`]: buttonStyle,
         };
     });
 };
 
-// antd 移除了default的样式，需要直接应用到ant-btn上，需要放到gengerate上面，确保有type的能覆盖它
-const genDefayltButtonStyle = () => {
+// antd 移除了default的样式，需要直接应用到antBtn上，需要放到gengerate上面，确保有type的能覆盖它
+const genDefayltButtonStyle = (
+    clsPrefix: string,
+    prefixCls: string,
+    token: Record<string, string>
+) => {
     const defaultStyle = {
         ...buttonColorMixin(
-            'var(--btn-default-color)',
-            'var(--btn-default-bg)',
-            'var(--btn-default-border-color)',
-            'var(--btn-default-icon-color)'
+            token['btnDefaultColor'],
+            token['btnDefaultBg'],
+            token['btnDefaultBorderColor'],
+            token['btnDefaultIconColor']
         ),
 
         '&:focus': {
             ...buttonColorMixin(
-                'var(--btn-default-focus-color)',
-                'var(--btn-default-focus-bg)',
-                'var(--btn-default-focus-border-color)',
-                'var(--btn-default-focus-color)'
+                token['btnDefaultFocusColor'],
+                token['btnDefaultFocusBg'],
+                token['btnDefaultFocusBorderColor'],
+                token['btnDefaultFocusColor']
             ),
-            boxShadow: 'var(--theme-component-focus-box-shadow)',
+            boxShadow: token['themeComponentFocusBoxShadow'],
         },
 
         '&:hover': buttonColorMixin(
-            'var(--btn-default-hover-color)',
-            'var(--btn-default-hover-bg)',
-            'var(--btn-default-hover-border-color)',
-            'var(--btn-default-hover-color)'
+            token['btnDefaultHoverColor'],
+            token['btnDefaultHoverBg'],
+            token['btnDefaultHoverBorderColor'],
+            token['btnDefaultHoverColor']
         ),
 
         '&:active': buttonColorMixin(
-            'var(--btn-default-active-color)',
-            'var(--btn-default-active-bg)',
-            'var(--btn-default-active-border-color)',
-            'var(--btn-default-active-color)'
+            token['btnDefaultActiveColor'],
+            token['btnDefaultActiveBg'],
+            token['btnDefaultActiveBorderColor'],
+            token['btnDefaultActiveColor']
         ),
 
         '&[disabled]':
             buttonColorMixin(
-                'var(--btn-default-disable-color)',
-                'var(--btn-default-disable-bg)',
-                'var(--btn-default-disable-border-color)',
-                'var(--btn-default-disable-color)'
+                token['btnDefaultDisableColor'],
+                token['btnDefaultDisableBg'],
+                token['btnDefaultDisableBorderColor'],
+                token['btnDefaultDisableColor']
             ),
 
 
-        [`&.${osuiButtonClassPrefix}-loading`]: buttonColorMixin(
-            'var(--btn-default-loading-color)',
-            'var(--btn-default-loading-bg)',
-            'var(--btn-default-loading-border-color)',
-            'var(--btn-default-loading-color)'
+        [`&.${clsPrefix}-loading`]: buttonColorMixin(
+            token['btnDefaultLoadingColor'],
+            token['btnDefaultLoadingBg'],
+            token['btnDefaultLoadingBorderColor'],
+            token['btnDefaultLoadingColor']
         ),
     };
     return {
-        [`.${osuiButtonClassPrefix}.${antPrefix}-btn`]: defaultStyle,
-        [`.${osuiButtonClassPrefix} .${antPrefix}-btn`]: defaultStyle,
+        [`.${clsPrefix}.${prefixCls}`]: defaultStyle,
+        [`.${clsPrefix} .${prefixCls}`]: defaultStyle,
     };
 };
 
-const genButtonFacesStyle = () => {
-    const buttonFaces = ['success', 'error', 'warning'];
+const genButtonFacesStyle = (
+    clsPrefix: string,
+    prefixCls: string,
+    token: Record<string, string>
+) => {
+    const buttonFaces = ['Success', 'Error', 'Warning'];
 
     return buttonFaces.map(face => ({
-        [`.${antPrefix}-btn.${osuiButtonClassPrefix}.${osuiButtonClassPrefix}-face-${face}`]: {
-            color: `var(--theme-${face}-color)`,
-            borderColor: `var(--theme-${face}-color)`,
+        [`.${prefixCls}.${clsPrefix}.${clsPrefix}-face-${face}`]: {
+            color: token[`theme${face}Color`],
+            borderColor: token[`theme${face}Color`],
 
             '&:focus': {
-                color: `var(--theme-${face}-color)`,
-                borderColor: `var(--theme-${face}-color)`,
+                color: token[`theme${face}Color`],
+                borderColor: token[`theme${face}Color`],
             },
 
             '&:hover': {
-                color: `var(--theme-${face}-color-hover)`,
-                borderColor: `var(--theme-${face}-color-hover)`,
+                color: token[`theme${face}ColorHover`],
+                borderColor: token[`theme${face}ColorHover`],
             },
 
             '&:active': {
-                color: `var(--theme-${face}-color-hover)`,
-                backgroundColor: `var(--color-${face}-1)`,
-                borderColor: `var(--theme-${face}-color-hover)`,
+                color: token[`theme${face}ColorHover`],
+                backgroundColor: token[`color${face}1`],
+                borderColor: token[`theme${face}ColorHover`],
             },
 
             '&[disabled]': {
-                color: `var(--color-${face}-3)`,
-                backgroundColor: `var(--color-${face}-1)`,
-                borderColor: `var(--color-${face}-2)`,
+                color: token[`color${face}3`],
+                backgroundColor: token[`color${face}1`],
+                borderColor: token[`color${face}2`],
             },
         },
 
-        [`.${osuiButtonClassPrefix}.${antPrefix}-btn-primary.${osuiButtonClassPrefix}-face-${face}`]: {
-            color: 'var(--btn-primary-color)',
-            backgroundColor: `var(--theme-${face}-color)`,
-            borderColor: `var(--theme-${face}-color)`,
+        [`.${clsPrefix}.${prefixCls}-primary.${clsPrefix}-face-${face}`]: {
+            color: token['btnPrimaryColor'],
+            backgroundColor: token[`theme${face}Color`],
+            borderColor: token[`theme${face}Color`],
 
             '&:focus': {
-                color: 'var(--btn-primary-color)',
-                backgroundColor: `var(--theme-${face}-color)`,
-                borderColor: `var(--theme-${face}-color)`,
+                color: token['btnPrimaryColor'],
+                backgroundColor: token[`theme${face}Color`],
+                borderColor: token[`theme${face}Color`],
             },
 
             '&:hover': {
-                color: 'var(--btn-primary-color)',
-                backgroundColor: `var(--theme-${face}-color-hover)`,
-                borderColor: `var(--theme-${face}-color-hover)`,
+                color: token['btnPrimaryColor'],
+                backgroundColor: token[`theme${face}ColorHover`],
+                borderColor: token[`theme${face}ColorHover`],
             },
 
             '&:active': {
-                color: 'var(--btn-primary-color)',
-                backgroundColor: `var(--theme-${face}-color-active)`,
-                borderColor: `var(--theme-${face}-color-active)`,
+                color: token['btnPrimaryColor'],
+                backgroundColor: token[`theme${face}ColorActive`],
+                borderColor: token[`theme${face}ColorActive`],
             },
 
             '&[disabled]': {
-                color: 'var(--btn-primary-color)',
-                backgroundColor: `var(--color-${face}-2)`,
-                borderColor: `var(--color-${face}-2)`,
+                color: token['btnPrimaryColor'],
+                backgroundColor: token[`color${face}2`],
+                borderColor: token[`color${face}2`],
             },
         },
     }));
 };
 
-const genStyle = () => {
+const genStyle = (
+    clsPrefix: string,
+    prefixCls: string,
+    token: Record<string, string>
+) => {
     return {
         // 对error text link 的button处理
-        [`.${antPrefix}-btn.${antPrefix}-btn-text`]: {
-            [`&.${osuiButtonClassPrefix}.${osuiButtonClassPrefix}-face-error`]: {
+        [`.${prefixCls}.${prefixCls}-text`]: {
+            [`&.${clsPrefix}.${clsPrefix}-faceError`]: {
                 background: 'transparent',
             },
         },
-        [`.${antPrefix}-btn.${antPrefix}-btn-link`]: {
-            [`&.${osuiButtonClassPrefix}.${osuiButtonClassPrefix}-face-error`]: {
+        [`.${prefixCls}.${prefixCls}-link`]: {
+            [`&.${clsPrefix}.${clsPrefix}-faceError`]: {
                 background: 'transparent',
             },
         },
 
         // ghost
-        [`.${antPrefix}-btn.${antPrefix}-btn-background-ghost`]: {
-            [`&.${osuiButtonClassPrefix}`]: {
-                color: 'var(--theme-component-bg)',
+        [`.${prefixCls}.${prefixCls}-backgroundGhost`]: {
+            [`&.${clsPrefix}`]: {
+                color: token['themeComponentBg'],
                 background: 'transparent',
-                borderColor: 'var(--theme-component-bg)',
+                borderColor: token['themeComponentBg'],
 
                 '&:focus': {
-                    color: 'var(--btn-default-hover-color)',
+                    color: token['btnDefaultHoverColor'],
                     background: 'transparent',
-                    borderColor: 'var(--btn-default-hover-border-color)',
+                    borderColor: token['btnDefaultHoverBorderColor'],
                 },
                 '&:hover': {
-                    color: 'var(--btn-default-hover-color)',
+                    color: token['btnDefaultHoverColor'],
                     background: 'transparent',
-                    borderColor: 'var(--btn-default-hover-border-color)',
+                    borderColor: token['btnDefaultHoverBorderColor'],
                 },
 
                 '&[disabled]': {
-                    color: 'var(--btn-default-disable-color)',
+                    color: token['btnDefaultDisableColor'],
                     background: 'transparent',
-                    borderColor: 'var(--btn-default-disable-border-color)',
+                    borderColor: token['btnDefaultDisableBorderColor'],
                 },
             },
         },
 
-        [`.${osuiButtonClassPrefix}`]: {
-            '&-flex-center': {
-                display: 'inline-flex',
+        [`.${clsPrefix}`]: {
+            '&-flexCenter': {
+                display: 'inlineFlex',
                 alignItems: 'center',
             },
-            [`&-flex-center.${antPrefix}-btn`]: {
-                display: 'inline-flex',
+            [`&-flexCenter.${prefixCls}`]: {
+                display: 'inlineFlex',
                 alignItems: 'center',
             },
-            [`&-flex-center .${antPrefix}-btn`]: {
-                display: 'inline-flex',
+            [`&-flexCenter .${prefixCls}`]: {
+                display: 'inlineFlex',
                 alignItems: 'center',
             },
 
-            '& .osui-icon + span': {
+            '& .osuiIcon + span': {
                 marginLeft: '4px',
             },
 
-            [`&.${antPrefix}-btn`]: {
+            [`&.${prefixCls}`]: {
                 transition: 'none',
             },
 
-            // loading的时候隐藏spinner后面的内容，除非强制keep-children
-            '&-loading &-icon-spinner:not(&-keep-children) + *': {
-                display: 'var(--btn-loading-text-display)',
+            // loading的时候隐藏spinner后面的内容，除非强制keepChildren
+            '&-loading &-iconSpinner:not(&-keepChildren) + *': {
+                display: token['btnLoadingTextDisplay'],
             },
 
-            [`&.${antPrefix}-btn-link`]: {
+            [`&.${prefixCls}-link`]: {
                 height: 'auto',
-                margin: 'var(--btn-link-margin)',
-                padding: 'var(--btn-link-padding)',
+                margin: token['btnLinkMargin'],
+                padding: token['btnLinkPadding'],
                 border: 0,
 
                 '& span:hover': {
-                    textDecoration: 'var(--btn-link-text-decoration)',
+                    textDecoration: token['btnLinkTextDecoration'],
                 },
             },
-            [`&.${antPrefix}-btn-text`]: {
+            [`&.${prefixCls}-text`]: {
                 height: 'auto',
-                margin: 'var(--btn-link-margin)',
-                padding: 'var(--btn-link-padding)',
+                margin: token['btnLinkMargin'],
+                padding: token['btnLinkPadding'],
                 border: 0,
 
                 '& span:hover': {
-                    textDecoration: 'var(--btn-link-text-decoration)',
+                    textDecoration: token['btnLinkTextDecoration'],
                 },
             },
 
             // 只有icon的时候居中icon
-            [`&.${antPrefix}-btn-icon-only`]: {
-                display: 'inline-flex',
+            [`&.${prefixCls}-iconOnly`]: {
+                display: 'inlineFlex',
                 alignItems: 'center',
                 justifyContent: 'center',
             },
 
-            // 去掉primary的box-shadow
-            [`&.${antPrefix}-btn-primary`]: {
+            // 去掉primary的boxShadow
+            [`&.${prefixCls}-primary`]: {
                 boxShadow: 'none',
             },
 
-            [`&.${antPrefix}-btn::before`]: {
+            [`&.${prefixCls}::before`]: {
                 opacity: 0,
             },
         },
 
         // 仅icon形式
-        [`.${osuiButtonClassPrefix}-btn-icon`]: {
+        [`.${clsPrefix}-btnIcon`]: {
             cursor: 'pointer',
 
             ...buttonColorMixin(
-                'var(--btn-icon-color)',
-                'var(--btn-icon-bg)',
-                'var(--btn-icon-border-color)',
-                'var(--btn-icon-color)'
+                token['btnIconColor'],
+                token['btnIconBg'],
+                token['btnIconBorderColor'],
+                token['btnIconColor']
             ),
 
             '&:focus': {
                 ...buttonColorMixin(
-                    'var(--btn-icon-focus-color)',
-                    'var(--btn-icon-focus-bg)',
-                    'var(--btn-icon-focus-border-color)',
-                    'var(--btn-icon-focus-color)'
+                    token['btnIconFocusColor'],
+                    token['btnIconFocusBg'],
+                    token['btnIconFocusBorderColor'],
+                    token['btnIconFocusColor']
                 ),
 
-                boxShadow: 'var(--theme-component-focus-box-shadow)',
+                boxShadow: token['themeComponentFocusBoxShadow'],
             },
 
             '&:hover': buttonColorMixin(
-                'var(--btn-icon-hover-color)',
-                'var(--btn-icon-hover-bg)',
-                'var(--btn-icon-hover-border-color)',
-                'var(--btn-icon-hover-color)'
+                token['btnIconHoverColor'],
+                token['btnIconHoverBg'],
+                token['btnIconHoverBorderColor'],
+                token['btnIconHoverColor']
             ),
 
             '&:active': buttonColorMixin(
-                'var(--btn-icon-active-color)',
-                'var(--btn-icon-active-bg)',
-                'var(--btn-icon-active-border-color)',
-                'var(--btn-icon-active-color)'
+                token['btnIconActiveColor'],
+                token['btnIconActiveBg'],
+                token['btnIconActiveBorderColor'],
+                token['btnIconActiveColor']
             ),
 
 
             '&[disabled]': {
-                cursor: 'not-allowed',
+                cursor: 'notAllowed',
 
-                [`&.${osuiButtonClassPrefix}-icon-spinner`]: {
-                    color: 'var(--theme-primary-color)',
+                [`&.${clsPrefix}-iconSpinner`]: {
+                    color: token['themePrimaryColor'],
                 },
 
                 ...buttonColorMixin(
-                    'var(--btn-icon-disable-color)',
+                    token['btnIconDisableColor'],
                     'transparent',
-                    'var(--btn-icon-disable-border-color)',
-                    'var(--btn-icon-disable-color)'
+                    token['btnIconDisableBorderColor'],
+                    token['btnIconDisableColor']
                 ),
             },
 
-            [`&.${osuiButtonClassPrefix}-loading`]: buttonColorMixin(
-                'var(--btn-icon-loading-color)',
-                'var(--btn-icon-loading-bg)',
-                'var(--btn-icon-loading-border-color)',
-                'var(--btn-icon-loading-color)'
+            [`&.${clsPrefix}-loading`]: buttonColorMixin(
+                token['btnIconLoadingColor'],
+                token['btnIconLoadingBg'],
+                token['btnIconLoadingBorderColor'],
+                token['btnIconLoadingColor']
             ),
         },
 
-        // revert antd不太正常的修复 https://github.com/ant-design/ant-design/issues/12978
-        [`a.${osuiButtonClassPrefix}`]: {
-            [`&.${antPrefix}-btn`]: {
+        // revert antd不太正常的修复 https://github.com/antDesign/antDesign/issues/12978
+        [`a.${clsPrefix}`]: {
+            [`&.${prefixCls}`]: {
                 paddingTop: 0,
                 paddingBottom: 0,
             },
         },
 
-        [`.${antPrefix}-btn.${antPrefix}-btn-sm`]: {
+        [`.${prefixCls}.${prefixCls}-sm`]: {
             padding: '2px 11px',
         },
     };
 };
 
-export const genButtonStyle: (
-    prefixCls: string, token: any,
-    cssVar: CssVar, clsPrefix: string
-) => CSSObject[] =
-    () => {
+export const genButtonStyle: (props: {
+    clsPrefix: string;
+    prefixCls: string;
+    token: Record<string, string>;
+    cssVar: CssVar;
+}) => CSSObject[] =
+    ({clsPrefix, prefixCls, token}) => {
         return [
-            genDefayltButtonStyle(),
-            ...genButtonTypesStyle(),
-            ...genButtonFacesStyle(),
-            genStyle(),
+            genDefayltButtonStyle(clsPrefix, prefixCls, token),
+            ...genButtonTypesStyle(clsPrefix, prefixCls, token),
+            ...genButtonFacesStyle(clsPrefix, prefixCls, token),
+            genStyle(clsPrefix, prefixCls, token),
         ];
     };
+
+export const useStyle = (
+    clsPrefix: string,
+    prefixCls: string,
+    cssVar: ThemeConfig['cssVar']
+) => {
+    const outTheme = useBrandContext();
+    // const cssVarIn = outTheme.designToken?.cssVar;
+    const hashed = outTheme.designToken?.hashed;
+    const {token: outerToken, theme, hashId} = useToken();
+
+    const [token] = useCacheToken(
+        theme as any,
+        [
+            prepareComponentToken(outerToken),
+        ],
+        {
+            salt: typeof hashed === 'string'
+                ? hashed
+                : Math.random().toString(36).slice(-8),
+            cssVar: cssVar
+                ? {
+                    prefix: (typeof cssVar === 'object'
+                        && cssVar.prefix)
+                        || 'ant',
+                }
+                : undefined,
+        }
+    );
+    const wrapSSROsui = useStyleRegister(
+        {
+            theme: theme as any,
+            token,
+            hashId,
+            path: [prefixCls],
+        },
+        () => [
+            genButtonStyle({
+                clsPrefix, prefixCls, token, cssVar,
+            }),
+        ]
+    );
+    return wrapSSROsui;
+};

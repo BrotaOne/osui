@@ -1,11 +1,12 @@
 import React, {
     useContext, useState, useEffect,
-    useRef, useCallback,
+    useRef, useCallback, FC,
 } from 'react';
 import {ConfigProvider, ThemeConfig, App} from 'antd';
 import Empty from '@osui/empty';
 import zhCN from 'antd/locale/zh_CN';
 import {ConfigProviderProps} from 'antd/es/config-provider';
+import tokens from '@osui/icloud-theme/dist/theme/tokens';
 import {acud} from './overwriteAntdToken';
 import {mergeTheme} from './mergeTheme';
 import {components} from './themeComponents';
@@ -29,8 +30,11 @@ export const BrandContext = React.createContext<BrandContextValue>({
     },
 });
 
-const theme: ThemeConfig = {
-    token: acud,
+const defaultTheme: ThemeConfig = {
+    token: {
+        ...acud,
+        ...tokens,
+    },
     components,
 };
 
@@ -53,14 +57,14 @@ const iCloudConfigs: ConfigProviderProps = {
     locale: zhCN,
 };
 
-const BrandProvider: React.FC<React.PropsWithChildren<{
+const BrandProvider: FC<{
     brand?: Brand;
     theme?: Partial<ThemeConfig>;
-} & ConfigProviderProps>> = (
+} & ConfigProviderProps> = (
     {brand, theme: outerTheme, children, ...ConfigProviderProps}
 ) => {
     const themeFromHook = useRef<ThemeConfig>({});
-    const [finalTheme, setTheme] = useState(theme);
+    const [finalTheme, setTheme] = useState(defaultTheme);
 
     useEffect(
         () => {
@@ -68,7 +72,7 @@ const BrandProvider: React.FC<React.PropsWithChildren<{
                 themeFromHook.current,
                 mergeTheme(
                     outerTheme,
-                    theme
+                    defaultTheme
                 )
             );
             // 合并优先级
@@ -115,4 +119,4 @@ export const useBrandContext = () => useContext(BrandContext);
 
 export default BrandProvider;
 
-export const osuiThemeConfig = theme;
+export const osuiThemeConfig = defaultTheme;
