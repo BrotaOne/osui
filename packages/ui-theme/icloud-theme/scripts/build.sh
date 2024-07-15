@@ -6,6 +6,7 @@ rm -rf dist
 rm -rf vars
 mkdir -p dist/theme
 mkdir -p vars
+cp variables/acud/tokens.ts vars/tokens.ts
 
 tsc
 echo 'tsc done'

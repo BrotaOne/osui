@@ -87,6 +87,7 @@
     "author": "huoyuxuan,liushaozhen",
     "license": "MIT",
     "dependencies": {
+        "@ant-design/cssinjs": "^1.18.4",
         "@huse/timeout": "^1.1.1",
         "@osui/config-provider": "^3.1.0-alpha.2",
         "classnames": "^2.3.1",
