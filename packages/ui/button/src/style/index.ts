@@ -37,15 +37,6 @@ const buttonColorMixin: any = (
     },
 });
 
-// const tokoneName2VarName = (tokenName: string) => {
-//     const reg = new RegExp(/([aZ])([AZ])/g);
-//     const name = tokenName.replace(reg, function rename(match, one, two) {
-//         return one + '_' + two.toLowerCase()
-//     });
-
-//     return name;
-// }
-
 const genButtonTypesStyle = (
     clsPrefix: string,
     prefixCls: string,
@@ -71,7 +62,7 @@ const genButtonTypesStyle = (
                     token[`btn${Type}FocusColor`]
                 ),
 
-                boxShadow: token['themeComponentFocusBoxShadow'],
+                'box-shadow': token['themeComponentFocusBoxShadow'],
             },
 
             '&:hover':
@@ -106,9 +97,18 @@ const genButtonTypesStyle = (
 
         };
 
+        // 前面的会覆盖 antd 的 error 部分样式
+        const dangerousStyle = {
+            color: token.btnPrimaryColor,
+            'background-color': token.themeErrorColor,
+            'border-color': token.themeErrorColor,
+        };
+
         return {
             [`.${clsPrefix}.${prefixCls}-${type}`]: buttonStyle,
             [`.${clsPrefix} .${prefixCls}-${type}`]: buttonStyle,
+            [`.${clsPrefix}.${prefixCls}-dangerous.${prefixCls}-primary`]: dangerousStyle,
+            [`.${clsPrefix} .${prefixCls}-dangerous.${prefixCls}-primary`]: dangerousStyle,
         };
     });
 };
@@ -134,7 +134,7 @@ const genDefayltButtonStyle = (
                 token['btnDefaultFocusBorderColor'],
                 token['btnDefaultFocusColor']
             ),
-            boxShadow: token['themeComponentFocusBoxShadow'],
+            'box-shadow': token['themeComponentFocusBoxShadow'],
         },
 
         '&:hover': buttonColorMixin(
@@ -180,64 +180,67 @@ const genButtonFacesStyle = (
 ) => {
     const buttonFaces = ['Success', 'Error', 'Warning'];
 
-    return buttonFaces.map(face => ({
-        [`.${prefixCls}.${clsPrefix}.${clsPrefix}-face-${face}`]: {
-            color: token[`theme${face}Color`],
-            borderColor: token[`theme${face}Color`],
-
-            '&:focus': {
+    return buttonFaces.map(face => {
+        const facelow = face.toLocaleLowerCase();
+        return ({
+            [`.${prefixCls}.${clsPrefix}.${clsPrefix}-face-${facelow}`]: {
                 color: token[`theme${face}Color`],
-                borderColor: token[`theme${face}Color`],
+                'border-color': token[`theme${face}Color`],
+
+                '&:focus': {
+                    color: token[`theme${face}Color`],
+                    'border-color': token[`theme${face}Color`],
+                },
+
+                '&:hover': {
+                    color: token[`theme${face}ColorHover`],
+                    'border-color': token[`theme${face}ColorHover`],
+                },
+
+                '&:active': {
+                    color: token[`theme${face}ColorHover`],
+                    'background-color': token[`color${face}1`],
+                    'border-color': token[`theme${face}ColorHover`],
+                },
+
+                '&[disabled]': {
+                    color: token[`color${face}3`],
+                    'background-color': token[`color${face}1`],
+                    'border-color': token[`color${face}2`],
+                },
             },
 
-            '&:hover': {
-                color: token[`theme${face}ColorHover`],
-                borderColor: token[`theme${face}ColorHover`],
-            },
-
-            '&:active': {
-                color: token[`theme${face}ColorHover`],
-                backgroundColor: token[`color${face}1`],
-                borderColor: token[`theme${face}ColorHover`],
-            },
-
-            '&[disabled]': {
-                color: token[`color${face}3`],
-                backgroundColor: token[`color${face}1`],
-                borderColor: token[`color${face}2`],
-            },
-        },
-
-        [`.${clsPrefix}.${prefixCls}-primary.${clsPrefix}-face-${face}`]: {
-            color: token['btnPrimaryColor'],
-            backgroundColor: token[`theme${face}Color`],
-            borderColor: token[`theme${face}Color`],
-
-            '&:focus': {
+            [`.${clsPrefix}.${prefixCls}-primary.${clsPrefix}-face-${facelow}`]: {
                 color: token['btnPrimaryColor'],
-                backgroundColor: token[`theme${face}Color`],
-                borderColor: token[`theme${face}Color`],
-            },
+                'background-color': token[`theme${face}Color`],
+                'border-color': token[`theme${face}Color`],
 
-            '&:hover': {
-                color: token['btnPrimaryColor'],
-                backgroundColor: token[`theme${face}ColorHover`],
-                borderColor: token[`theme${face}ColorHover`],
-            },
+                '&:focus': {
+                    color: token['btnPrimaryColor'],
+                    'background-color': token[`theme${face}Color`],
+                    'border-color': token[`theme${face}Color`],
+                },
 
-            '&:active': {
-                color: token['btnPrimaryColor'],
-                backgroundColor: token[`theme${face}ColorActive`],
-                borderColor: token[`theme${face}ColorActive`],
-            },
+                '&:hover': {
+                    color: token['btnPrimaryColor'],
+                    'background-color': token[`theme${face}ColorHover`],
+                    'border-color': token[`theme${face}ColorHover`],
+                },
 
-            '&[disabled]': {
-                color: token['btnPrimaryColor'],
-                backgroundColor: token[`color${face}2`],
-                borderColor: token[`color${face}2`],
+                '&:active': {
+                    color: token['btnPrimaryColor'],
+                    'background-color': token[`theme${face}ColorActive`],
+                    'border-color': token[`theme${face}ColorActive`],
+                },
+
+                '&[disabled]': {
+                    color: token['btnPrimaryColor'],
+                    'background-color': token[`color${face}2`],
+                    'border-color': token[`color${face}2`],
+                },
             },
-        },
-    }));
+        });
+    });
 };
 
 const genStyle = (
@@ -248,58 +251,58 @@ const genStyle = (
     return {
         // 对error text link 的button处理
         [`.${prefixCls}.${prefixCls}-text`]: {
-            [`&.${clsPrefix}.${clsPrefix}-faceError`]: {
+            [`&.${clsPrefix}.${clsPrefix}-face-error`]: {
                 background: 'transparent',
             },
         },
         [`.${prefixCls}.${prefixCls}-link`]: {
-            [`&.${clsPrefix}.${clsPrefix}-faceError`]: {
+            [`&.${clsPrefix}.${clsPrefix}-face-error`]: {
                 background: 'transparent',
             },
         },
 
         // ghost
-        [`.${prefixCls}.${prefixCls}-backgroundGhost`]: {
+        [`.${prefixCls}.${prefixCls}-background-ghost`]: {
             [`&.${clsPrefix}`]: {
                 color: token['themeComponentBg'],
                 background: 'transparent',
-                borderColor: token['themeComponentBg'],
+                'border-color': token['themeComponentBg'],
 
                 '&:focus': {
                     color: token['btnDefaultHoverColor'],
                     background: 'transparent',
-                    borderColor: token['btnDefaultHoverBorderColor'],
+                    'border-color': token['btnDefaultHoverBorderColor'],
                 },
                 '&:hover': {
                     color: token['btnDefaultHoverColor'],
                     background: 'transparent',
-                    borderColor: token['btnDefaultHoverBorderColor'],
+                    'border-color': token['btnDefaultHoverBorderColor'],
                 },
 
                 '&[disabled]': {
                     color: token['btnDefaultDisableColor'],
                     background: 'transparent',
-                    borderColor: token['btnDefaultDisableBorderColor'],
+                    'border-color': token['btnDefaultDisableBorderColor'],
                 },
             },
         },
 
         [`.${clsPrefix}`]: {
-            '&-flexCenter': {
-                display: 'inlineFlex',
-                alignItems: 'center',
+            '&-flex-center': {
+                display: 'inline-flex',
+                'align-items': 'center',
             },
-            [`&-flexCenter.${prefixCls}`]: {
-                display: 'inlineFlex',
-                alignItems: 'center',
+            [`&-flex-center.${prefixCls}`]: {
+                display: 'inline-flex',
+                'align-items': 'center',
             },
-            [`&-flexCenter .${prefixCls}`]: {
-                display: 'inlineFlex',
-                alignItems: 'center',
+            [`&-flex-center .${prefixCls}`]: {
+                display: 'inline-flex',
+                'align-tems': 'center',
             },
 
-            '& .osuiIcon + span': {
-                marginLeft: '4px',
+            '& .osui-icon + span': {
+                'margin-left': '4px',
             },
 
             [`&.${prefixCls}`]: {
@@ -307,7 +310,7 @@ const genStyle = (
             },
 
             // loading的时候隐藏spinner后面的内容，除非强制keepChildren
-            '&-loading &-iconSpinner:not(&-keepChildren) + *': {
+            '&-loading &-icon-spinner:not(&-keep-children) + *': {
                 display: token['btnLoadingTextDisplay'],
             },
 
@@ -318,7 +321,7 @@ const genStyle = (
                 border: 0,
 
                 '& span:hover': {
-                    textDecoration: token['btnLinkTextDecoration'],
+                    'text-decoration': token['btnLinkTextDecoration'],
                 },
             },
             [`&.${prefixCls}-text`]: {
@@ -328,20 +331,20 @@ const genStyle = (
                 border: 0,
 
                 '& span:hover': {
-                    textDecoration: token['btnLinkTextDecoration'],
+                    'text-decoration': token['btnLinkTextDecoration'],
                 },
             },
 
             // 只有icon的时候居中icon
-            [`&.${prefixCls}-iconOnly`]: {
-                display: 'inlineFlex',
-                alignItems: 'center',
-                justifyContent: 'center',
+            [`&.${prefixCls}-icon-only`]: {
+                display: 'inline-flex',
+                'align-items': 'center',
+                'justify-content': 'center',
             },
 
             // 去掉primary的boxShadow
             [`&.${prefixCls}-primary`]: {
-                boxShadow: 'none',
+                'box-shadow': 'none',
             },
 
             [`&.${prefixCls}::before`]: {
@@ -350,7 +353,7 @@ const genStyle = (
         },
 
         // 仅icon形式
-        [`.${clsPrefix}-btnIcon`]: {
+        [`.${clsPrefix}-btn-icon`]: {
             cursor: 'pointer',
 
             ...buttonColorMixin(
@@ -368,7 +371,7 @@ const genStyle = (
                     token['btnIconFocusColor']
                 ),
 
-                boxShadow: token['themeComponentFocusBoxShadow'],
+                'box-shadow': token['themeComponentFocusBoxShadow'],
             },
 
             '&:hover': buttonColorMixin(
@@ -387,9 +390,9 @@ const genStyle = (
 
 
             '&[disabled]': {
-                cursor: 'notAllowed',
+                cursor: 'not-allowed',
 
-                [`&.${clsPrefix}-iconSpinner`]: {
+                [`&.${clsPrefix}-icon-spinner`]: {
                     color: token['themePrimaryColor'],
                 },
 
@@ -412,8 +415,8 @@ const genStyle = (
         // revert antd不太正常的修复 https://github.com/antDesign/antDesign/issues/12978
         [`a.${clsPrefix}`]: {
             [`&.${prefixCls}`]: {
-                paddingTop: 0,
-                paddingBottom: 0,
+                'padding-top': 0,
+                'padding-bottom': 0,
             },
         },
 

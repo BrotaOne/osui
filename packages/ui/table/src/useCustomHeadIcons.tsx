@@ -1,3 +1,4 @@
+// 弃用，下个版本删
 import React, {useState, useMemo, useCallback} from 'react';
 import type {SorterResult, SortOrder, ColumnType} from 'antd/es/table/interface';
 import {
@@ -118,7 +119,7 @@ const useCustomHeadIcons: <T extends {
                 ...(column.sorter ? {title} : {}),
             };
         }),
-        [columns, sortedInfo]
+        [columns, sortedInfo, onClick, prefixCls]
     );
 
     return {

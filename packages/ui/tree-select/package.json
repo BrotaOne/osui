@@ -27,6 +27,7 @@
         "es/*.less"
     ],
     "devDependencies": {
+        "@ant-design/cssinjs": "^1.18.4",
         "@babel/cli": "^7.10.5",
         "@babel/preset-env": "^7.10.4",
         "@babel/preset-react": "^7.10.4",
@@ -52,7 +53,7 @@
         "@types/jest": "^27.0.0",
         "@types/react-dom": "^17.0.2",
         "@types/react-test-renderer": "^17.0.1",
-        "antd": "^5.12.5",
+        "antd": "^5.13.0",
         "cpy-cli": "^3.1.1",
         "enzyme": "^3.11.0",
         "identity-obj-proxy": "^3.0.0",
@@ -75,8 +76,9 @@
         "vite": "^4.5.0"
     },
     "peerDependencies": {
+        "@ant-design/cssinjs": "^1.18.4",
         "@osui/icons": "^3.0.0",
-        "antd": "^5.0.0",
+        "antd": "^5.13.0",
         "react": ">=17.0.0",
         "react-dom": ">=17.0.0"
     },

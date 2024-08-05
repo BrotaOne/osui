@@ -1,6 +1,7 @@
+// 弃用，下个版本删
 import React, {useEffect} from 'react';
 import {Reference} from 'rc-table';
-import './index.less';
+// import './index.less';
 
 const paginationClassName = '-table-pagination';
 const paginationOptionClassName = '-pagination-options';
@@ -33,6 +34,7 @@ const handleAddAndRemove: (
     parentDom: HTMLElement,
     prefixCls: string
 ) => void = (parentDom, prefixCls) => {
+
     const pageSizeDom = parentDom.querySelector(`.${prefixCls}${pageSizeClassName}`);
     const quickJumperDom = parentDom.querySelector(`.${prefixCls}${quickJumperClassName}`);
 

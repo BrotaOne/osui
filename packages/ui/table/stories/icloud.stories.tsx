@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import Switch from '@osui/switch';
 import Radio from '@osui/radio';
 import Form from '@osui/form';
@@ -31,6 +31,7 @@ export default {
 };
 
 export const Demo = () => {
+    const [cssVar, setCssVar] = useState(false);
     const ref = useRef(null);
 
     const columns = [
@@ -89,8 +90,17 @@ export const Demo = () => {
                             paddingXS: 5.5,
                         },
                     },
+                    cssVar: cssVar && {
+                        prefix: 'tna',
+                        key: 'tluafed',
+                    },
                 }}
             >
+                <button
+                    onClick={() => setCssVar(v => !v)}
+                >
+                    切换{cssVar ? '不' : ''}使用cssVar
+                </button>
                 <Table
                     ref={ref}
                     columns={columns}
@@ -106,6 +116,7 @@ export const Demo = () => {
                         pageSizeOptions: [1, 2, 10, 100],
                         // position: ['bottomRight', 'topRight']
                         position: ['bottomLeft', 'topRight'],
+                        showTotal: total => `Total ${total} items`,
                     }}
                 />
                 <br />
@@ -893,18 +904,20 @@ export const TestCase2 = () => {
     // 会有一个warning
     const pagination = {total: 100, pageSize: 10, current: 2};
     return (
-        <Table
-            columns={columns}
-            dataSource={dynamicData}
-            pagination={pagination}
-            getPopupContainer={
-                node => {
-                    // 这个会被调用
-                    console.log(1);
-                    return node.parentNode as HTMLElement;
+        <BrandProvider>
+            <Table
+                columns={columns}
+                dataSource={dynamicData}
+                pagination={pagination}
+                getPopupContainer={
+                    node => {
+                        // 这个会被调用
+                        console.log(1);
+                        return node.parentNode as HTMLElement;
+                    }
                 }
-            }
-        />
+            />
+        </BrandProvider>
     );
 };
 

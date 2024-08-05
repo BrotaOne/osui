@@ -1,11 +1,12 @@
-import React from 'react';
-import {TreeSelect as AntdTreeSelect, TreeSelectProps as AntdTreeSelectProps} from 'antd';
+import React, {useContext} from 'react';
+import {TreeSelect as AntdTreeSelect, TreeSelectProps as AntdTreeSelectProps, ConfigProvider} from 'antd';
 import classNames from 'classnames';
 import {IconDownOutlined} from '@osui/icons';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import type {BaseSelectRef} from 'rc-select';
 import type {BaseOptionType, DefaultOptionType} from 'antd/es/select';
-import './index.less';
+// import './index.less';
+import {useStyle} from './style';
 
 const clsPrefix = 'osui-tree-select';
 
@@ -13,6 +14,10 @@ const InternalTreeSelect = <OptionType extends BaseOptionType | DefaultOptionTyp
     {className, popupClassName, ...props}: AntdTreeSelectProps<OptionType>,
     ref: React.Ref<BaseSelectRef>
 ) => {
+    const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
+    const cssVar = theme?.cssVar;
+    const prefixCls = getPrefixCls('select-tree', props.prefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const innerClassName = classNames(className, clsPrefix);
     const innerPopupClassName = classNames(popupClassName, `${clsPrefix}-dropdown`);
     const innerSwitcherIcon = props.switcherIcon ?? (
@@ -20,7 +25,7 @@ const InternalTreeSelect = <OptionType extends BaseOptionType | DefaultOptionTyp
             <IconDownOutlined className={classNames(`${clsPrefix}-switcherIcon`)} />
         </span>
     );
-    return (
+    return wrapSSROsui(
         <AntdTreeSelect
             ref={ref}
             className={innerClassName}

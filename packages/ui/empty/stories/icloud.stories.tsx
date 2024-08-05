@@ -14,7 +14,9 @@ export const Demo1 = EmptyInComponents;
 export const Demo2 = () => {
     return (
         <BrandProvider>
+            <Empty type="error" description="404 Not Found" />
             <Empty type="error" description="404 Not Found" size="large" />
+            <Empty type="error" description="404 Not Found" size="small" />
         </BrandProvider>
     );
 };

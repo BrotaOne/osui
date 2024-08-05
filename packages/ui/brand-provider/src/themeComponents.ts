@@ -12,19 +12,19 @@ export const components: ThemeConfig['components'] = {
     Input: {
         paddingSM: 13,
         controlPaddingHorizontal: 13,
-        colorBgContainerDisabled: '#F7F7F9',
-        colorFillAlter: '#F7F7F9',
-        colorTextPlaceholder: '#B8BABF',
+        colorBgContainerDisabled: '#f7f7f9',
+        colorFillAlter: '#f7f7f9',
+        colorTextPlaceholder: '#b8babf',
     },
     Alert: {
-        colorInfoBorder: '#E6F0FF',
-        colorInfoBg: '#E6F0FF',
-        colorWarningBorder: '#FFF4E6',
-        colorWarningBg: '#FFF4E6',
-        colorSuccessBorder: '#ECFFE6',
-        colorSuccessBg: '#ECFFE6',
-        colorErrorBorder: '#FFE8E6',
-        colorErrorBg: '#FFE8E6',
+        colorInfoBorder: '#e6f0ff',
+        colorInfoBg: '#e6f0ff',
+        colorWarningBorder: '#fff4e6',
+        colorWarningBg: '#fff4e6',
+        colorSuccessBorder: '#ecffe6',
+        colorSuccessBg: '#ecffe6',
+        colorErrorBorder: '#ffe8e6',
+        colorErrorBg: '#ffe8e6',
         lineHeight: 1.5,
         fontSize: 12,
     },
@@ -48,7 +48,7 @@ export const components: ThemeConfig['components'] = {
     },
     Anchor: {
         fontSize: 12,
-        colorSplit: '#E8E9EB',
+        colorSplit: '#e8e9eb',
     },
     DatePicker: {
         paddingSM: 13,
@@ -63,24 +63,24 @@ export const components: ThemeConfig['components'] = {
     Steps: {
         controlHeight: 26,
         fontSize: 14,
-        controlItemBgActive: '#FFF',
-        colorTextDescription: '#5C5F66',
+        controlItemBgActive: '#fff',
+        colorTextDescription: '#5c5f66',
         marginXS: 10,
         controlHeightLG: 42,
-        colorFillContent: '#FFF',
+        colorFillContent: '#fff',
     },
     Table: {
-        colorFillAlter: '#F7F7F9',
+        colorFillAlter: '#f7f7f9',
         padding: 10,
         paddingContentVerticalLG: 11,
-        colorTextHeading: '#5C5F66',
+        colorTextHeading: '#5c5f66',
         paddingXS: 5.5,
     },
     Tooltip: {
         colorBgBase: '#fff',
         // antd 5 在某个版本之后更改了 token 名
         colorBgSpotlight: '#fff',
-        colorTextLightSolid: '#151B26',
+        colorTextLightSolid: '#151b26',
     },
     Tabs: {
         fontSize: 14,
@@ -90,18 +90,18 @@ export const components: ThemeConfig['components'] = {
         colorTextDescription: '#5c5f66',
     },
     Menu: {
-        colorItemTextHover: '#2468F2',
+        colorItemTextHover: '#2468f2',
         colorItemBgHover: 'transparent',
         borderRadiusLG: 0,
         marginXXS: 0,
     },
     Tag: {
         lineHeight: 1.8,
-        colorFillQuaternary: '#F7F7F9',
+        colorFillQuaternary: '#f7f7f9',
     },
     Result: {
         fontSizeHeading3: 24,
-        colorTextDescription: '#5C5F66',
+        colorTextDescription: '#5c5f66',
         marginXS: 0,
         lineHeightHeading3: 1.8,
         lineHeight: 1.6,
@@ -120,7 +120,20 @@ export const components: ThemeConfig['components'] = {
         marginXS: 0,
     },
     Layout: {
-        colorBgBody: '#F7F7F9',
+        colorBgBody: '#f7f7f9',
+    },
+    Collapse: {
+        headerBg: '#f2f2f4',
+    },
+    Message: {
+        paddingSM: 16,
+        fontSize: 14,
+        borderRadiusLG: 8,
+        contentPadding: '9px 12px',
+        lineHeight: 1.5,
+    },
+    Progress: {
+        marginXS: 0,
     },
 };
 

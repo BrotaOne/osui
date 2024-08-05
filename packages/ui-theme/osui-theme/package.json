@@ -21,7 +21,6 @@
   ],
   "devDependencies": {
     "@babel/cli": "^7.10.5",
-    "@osui/brand-provider": "^3.1.0-alpha.2",
     "@osui/icons": "^3.1.0-alpha.2",
     "@reskript/cli": "^6.0.0",
     "@reskript/cli-lint": "^6.0.0",
@@ -29,7 +28,7 @@
     "@reskript/config-lint": "^6.0.0",
     "@reskript/config-webpack": "^6.0.0",
     "@types/react-dom": "^17.0.2",
-    "antd": "^5.8.6",
+    "antd": "^5.13.0",
     "cpy-cli": "^3.1.1",
     "mkdirp": "^1.0.4",
     "prop-types": "^15.7.2",

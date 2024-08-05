@@ -20,14 +20,14 @@ const DisplayTagsInPopoverSelect = forwardRef(<T = DefaultType>(
 ) => {
     const [selectedValue, setSelectedValue] = useDerivedState<T | undefined>(props.value as T);
     const handleChange = useCallback(
-        (value, option) => {
+        (value: any, option: any) => {
             setSelectedValue(value);
             props.onChange?.(value, option);
         },
         [props, setSelectedValue]
     );
     const handleClose = useCallback(
-        tag => {
+        (tag: any) => {
             const newSelectedValue = Array.isArray(selectedValue)
                 ? (selectedValue.filter(v => v !== tag.value) as T)
                 : selectedValue === tag.value
@@ -38,7 +38,7 @@ const DisplayTagsInPopoverSelect = forwardRef(<T = DefaultType>(
         [selectedValue, setSelectedValue]
     );
     const renderMaxTagPlaceholder = useCallback(
-        args => {
+        (args: any) => {
             if (!args.length) {
                 return null;
             }
