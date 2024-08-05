@@ -1,7 +1,7 @@
 import React, {ReactElement, ReactNode, useContext, useLayoutEffect} from 'react';
 import {message as AntdMessage, ConfigProvider, theme as AntdTheme} from 'antd';
 import {
-    MessageInstance,
+    MessageInstance as AntdMessageInstance,
     ConfigOptions,
 } from 'antd/es/message/interface';
 import {useStyle} from './style';
@@ -11,10 +11,11 @@ const {useToken} = AntdTheme;
 import {genOpenMessage, genMessage} from './genMessage';
 import {type MessageApi, type MessageArgsProps} from './interface';
 
+export type MessageInstance = AntdMessageInstance;
+
 export {
     MessageApi,
     MessageArgsProps,
-    MessageInstance,
 };
 
 const OSUIMessage = Object.assign({}, AntdMessage, {
@@ -35,7 +36,7 @@ interface Props {
 }
 
 interface GlobalHolderRef {
-    instance: MessageInstance;
+    instance: AntdMessageInstance;
     sync: () => void;
 }
 
@@ -65,21 +66,21 @@ export const messageGlobalHolderRender = ({
                 }
                 const methods = ['success', 'error', 'warning', 'info', 'loading'] as const;
                 const instance = {
-                    ...(instanceIn as MessageInstance),
+                    ...(instanceIn as AntdMessageInstance),
                 };
 
                 instance.open = genOpenMessage(
                     'open',
                     `${hashId} undefined`,
                     wrapSSROsui,
-                    instanceIn as MessageInstance);
+                    instanceIn as AntdMessageInstance);
 
                 for (const method of methods) {
                     instance[method] = genMessage(
                         method,
                         `${hashId} undefined`,
                         wrapSSROsui,
-                        instanceIn as MessageInstance
+                        instanceIn as AntdMessageInstance
                     );
                 }
                 ref?.({
