@@ -97,10 +97,13 @@ function EnhancedInternalSelect<T = DefaultType>(
     return <Select {...restProps} ref={ref} />;
 }
 
-const EnhancedSelect = React.forwardRef(EnhancedInternalSelect) as <T = DefaultType>(
+type EnhancedSelectType = typeof AntdSelect & React.ForwardRefExoticComponent<(<T = DefaultType>(
     props: React.ComponentProps<typeof Select<T>>,
     ref: React.Ref<RefSelectProps> | undefined
-) => ForwardRefReturn;
+) => ForwardRefReturn)>;
+
+const EnhancedSelect: EnhancedSelectType =
+    React.forwardRef(EnhancedInternalSelect) as EnhancedSelectType;
 
 hoistNonReactStatics(EnhancedSelect, AntdSelect);
 
