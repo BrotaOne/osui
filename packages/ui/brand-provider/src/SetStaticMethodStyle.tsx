@@ -7,26 +7,59 @@ import {
     useGetModalWrapSSROsui,
 } from '@osui/modal';
 import {ConfigProvider} from 'antd';
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, ReactNode} from 'react';
 
-type HolderRender = (children: React.ReactNode) => React.ReactNode;
+type WrapSSROsui = (node: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => React.JSX.Element;
 
-let globalHolderRender: HolderRender | undefined = p => p;
+interface ComponentInfo {
+    wrapSSROsui: WrapSSROsui;
+    hashId: string;
+}
 
-export type Config = (props: Parameters<typeof ConfigProvider.config>, overide: boolean) => void;
+type HolderRender = (children: ReactNode, messageInfo?: ComponentInfo, modalInfo?: ComponentInfo) => ReactNode;
 
-export const config: Config = (props, overide) => {
-    const holderRender = props?.[0]?.holderRender;
+const emptyFn = (p: ReactNode) => p;
+
+let globalHolderRender: HolderRender | undefined = (children, messageInfo, modalInfo) => {
+    const afterMessageChildren = messageInfo?.wrapSSROsui && messageInfo?.hashId
+        ? messageGlobalHolderRender({
+            wrapSSROsui: messageInfo.wrapSSROsui,
+            hashId: messageInfo.hashId,
+        })(children)
+        : emptyFn(children);
+
+    const afterModalChildren = modalInfo?.wrapSSROsui && modalInfo?.hashId
+        ? modalGlobalHolderRender({
+            wrapSSROsui: modalInfo.wrapSSROsui,
+            hashId: modalInfo.hashId,
+        })(afterMessageChildren)
+        : emptyFn(children);
+
+    return afterModalChildren;
+};
+ConfigProvider.config({
+    holderRender: globalHolderRender,
+});
+
+export type Config = (
+    props: Parameters<typeof ConfigProvider.config>[0],
+    overide?: boolean
+) => void;
+
+export const config: Config = (props, overide = false) => {
+    const holderRender = props?.holderRender;
     if (overide || !holderRender || !globalHolderRender) {
-        ConfigProvider.config(...props);
+        ConfigProvider.config(props);
         globalHolderRender = holderRender;
         return;
     }
+
+    globalHolderRender = children => (globalHolderRender
+        ? globalHolderRender(holderRender(children))
+        : holderRender(children));
     ConfigProvider.config({
         ...props,
-        holderRender: children => (globalHolderRender
-            ? globalHolderRender(holderRender(children))
-            : holderRender(children)),
+        holderRender: globalHolderRender,
     });
 };
 
@@ -36,22 +69,14 @@ export const SetStaticMethodStyle = () => {
 
     useLayoutEffect(
         () => {
-            globalHolderRender = children => {
-                const afterMessageChildren = messageGlobalHolderRender({
-                    wrapSSROsui: messageWrapSSROsui,
-                    hashId: messageHashId,
-                })(children);
-                const afterModalChildren = modalGlobalHolderRender({
-                    wrapSSROsui: modalWrapSSROsui,
-                    hashId: modalHashId,
-                })(afterMessageChildren);
-                return afterModalChildren;
-            };
             ConfigProvider.config({
-                holderRender: globalHolderRender,
+                holderRender: children => globalHolderRender?.(
+                    children,
+                    {wrapSSROsui: messageWrapSSROsui, hashId: messageHashId},
+                    {wrapSSROsui: modalWrapSSROsui, hashId: modalHashId}
+                ),
             });
         }
     );
     return <></>;
 };
-
