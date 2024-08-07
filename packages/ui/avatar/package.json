@@ -30,7 +30,7 @@
         "@ant-design/cssinjs": "^1.18.4",
         "@ant-design/icons": "^5.0.0",
         "@babel/cli": "^7.10.5",
-        "@osui/brand-provider": "workspace:*",
+        "@osui/brand-provider": "^3.1.0-alpha.3",
         "@osui/icloud-theme": "^3.1.0-alpha.2",
         "@osui/icons": "^3.1.0-alpha.2",
         "@osui/theme": "^3.1.0-alpha.2",
