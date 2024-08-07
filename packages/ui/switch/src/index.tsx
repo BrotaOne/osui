@@ -21,8 +21,8 @@ const Switch: CompoundedComponent = React.forwardRef<HTMLButtonElement, AntdSwit
         const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
         const cssVar = theme?.cssVar;
         const prefixCls = getPrefixCls('switch', restProps.prefixCls);
-        const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
-        // const wrapSSROsui = p => p;
+        const antPrefix = getPrefixCls('');
+        const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
         return wrapSSROsui(
             <AntdSwitch
                 ref={ref}
