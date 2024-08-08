@@ -6,7 +6,7 @@ import {ConfigProvider, ThemeConfig, App} from 'antd';
 import Empty from '@osui/empty';
 import zhCN from 'antd/locale/zh_CN';
 import {ConfigProviderProps} from 'antd/es/config-provider';
-import tokens from '@osui/icloud-theme/dist/theme/tokens';
+import {tokens} from '@osui/icloud-theme';
 import {acud} from './overwriteAntdToken';
 import {mergeTheme} from './mergeTheme';
 import {components} from './themeComponents';
