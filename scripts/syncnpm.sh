@@ -63,7 +63,7 @@ open https://npmmirror.com/sync/@osui/table
 open https://npmmirror.com/sync/@osui/tabs
 open https://npmmirror.com/sync/@osui/tag
 open https://npmmirror.com/sync/@osui/text-overflow-tooltip
-open https://npmmirror.com/sync/@osui/theme-provider
+# open https://npmmirror.com/sync/@osui/theme-provider
 open https://npmmirror.com/sync/@osui/time-picker
 open https://npmmirror.com/sync/@osui/timeline
 open https://npmmirror.com/sync/@osui/tooltip

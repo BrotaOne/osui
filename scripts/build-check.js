@@ -83,7 +83,7 @@ const all = [
     'ui',
     'upload',
     'version',
-    'theme-provider',
+    // 'theme-provider',
     'osui-icons',
     'osui-icons-icloud',
 ];

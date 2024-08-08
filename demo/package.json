@@ -141,7 +141,6 @@
     "@osui/tabs": "^3.1.0-alpha.2",
     "@osui/tag": "^3.1.0-alpha.2",
     "@osui/text-overflow-tooltip": "^3.1.0-alpha.2",
-    "@osui/theme-provider": "^3.1.0-alpha.2",
     "@osui/time-picker": "^3.1.0-alpha.2",
     "@osui/timeline": "^3.1.0-alpha.2",
     "@osui/tooltip": "^3.1.0-alpha.2",

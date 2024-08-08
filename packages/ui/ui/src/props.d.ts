@@ -68,6 +68,7 @@ export type {TimelineProps, TimelineItemProps} from '@osui/timeline';
 export type {TooltipProps} from '@osui/tooltip';
 export type {TypographyProps} from '@osui/typography';
 export type {UploadProps} from '@osui/upload';
-export type {ThemeType, SetTheme, ThemeEnum, ThemeContextType} from '@osui/theme-provider';
 export type {SegmentedProps} from '@osui/segmented';
 export type {FlexProps} from '@osui/flex';
+export type {QRCodeProps, QRPropsCanvas, QRPropsSvg} from '@osui/qr-code';
+export type {ColorPickerProps} from '@osui/color-picker';
