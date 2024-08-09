@@ -7,7 +7,7 @@ import {useDerivedState} from '@huse/derived-state';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import {ConfigProvider, theme} from 'antd';
 import QuickEditDisplay from './QuickEditDisplay';
-import './index.less';
+// import './index.less';
 import {useStyle} from './style';
 
 const clsPrefix = 'osui-quick-edit';

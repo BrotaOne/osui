@@ -76,8 +76,6 @@ export const genCollapseStyle: (props: {
     cssVar: CssVar;
 }) => CSSObject[] =
     ({clsPrefix, prefixCls, token}) => {
-        // console.log('token', token, token['collapseHeaderHeight'],)
-        console.log(`.${clsPrefix}-level-${1}`, `.${clsPrefix}-level-${2}`);
         return [{
             [`.${clsPrefix}`]: {
                 [`&:not(.${prefixCls}-ghost)`]: {

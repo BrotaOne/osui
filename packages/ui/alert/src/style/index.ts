@@ -28,7 +28,6 @@ export const genAlertStyle: (props: {
     cssVar: CssVar;
 }) => CSSObject[] =
     ({clsPrefix, prefixCls, token}) => {
-        console.log(clsPrefix, prefixCls, token);
         return [{
             [`.${clsPrefix}`]: {
                 'display': 'flex',

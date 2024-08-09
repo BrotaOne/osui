@@ -9,7 +9,8 @@ import BrandProvider from '@osui/brand-provider';
 import {version} from 'antd';
 import Button from '../src';
 import {MinWidth} from './icloud-demo';
-import './index.less';
+// import './index.less';
+import './index.css';
 
 const Blockquote = ({children}) => (
     <blockquote style={{

@@ -29,7 +29,6 @@ export const genInputNumberStyle: (props: {
     antPrefix: string;
 }) => CSSObject[] =
     ({clsPrefix, prefixCls, token, antPrefix}) => {
-        console.log('clsPrefix: ', clsPrefix);
         return [
             {
                 [`.${clsPrefix}`]: {

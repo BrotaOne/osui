@@ -1,9 +1,9 @@
 .icon-strong {
     color: var(--theme-primary-color);
+}
 
-    &.osui-button-icon-spinner {
-        color: var(--color-brand-3);
-    }
+.icon-strong.osui-button-icon-spinner {
+    color: var(--color-brand-3);
 }
 
 .text-link {

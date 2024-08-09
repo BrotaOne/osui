@@ -27,8 +27,7 @@ export const genAlertStyle: (props: {
     token: Record<string, string>;
     cssVar: CssVar;
 }) => CSSObject[] =
-    ({clsPrefix, prefixCls, token}) => {
-        console.log(clsPrefix, prefixCls, token);
+    ({prefixCls, token}) => {
         return [{
             [`.${prefixCls}`]: {
                 '[class^=ant-]::-ms-clear': {

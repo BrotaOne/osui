@@ -29,7 +29,6 @@ export const genAutoCompleteStyle: (props: {
     selectAntdprefixCls: string;
 }) => CSSObject[] =
     ({clsPrefix, token, selectAntdprefixCls}) => {
-        console.log(`.${selectAntdprefixCls}-item-option-active`);
         return [{
             [`.${clsPrefix}-dropdown`]: {
                 [`.${selectAntdprefixCls}-item-option-active:not(.${selectAntdprefixCls}-item-option-disabled`]: {
