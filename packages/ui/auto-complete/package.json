@@ -29,12 +29,12 @@
     "devDependencies": {
         "@ant-design/cssinjs": "^1.18.4",
         "@babel/cli": "^7.10.5",
-        "@osui/brand-provider": "^3.1.0-alpha.2",
-        "@osui/divider": "^3.1.0-alpha.2",
-        "@osui/icloud-theme": "^3.1.0-alpha.2",
-        "@osui/icons": "^3.1.0-alpha.2",
-        "@osui/markdown": "^3.1.0-alpha.2",
-        "@osui/theme": "^3.1.0-alpha.2",
+        "@osui/brand-provider": "^3.1.0-alpha.14",
+        "@osui/divider": "^3.1.0-alpha.14",
+        "@osui/icloud-theme": "^3.1.0-alpha.14",
+        "@osui/icons": "^3.1.0-alpha.14",
+        "@osui/markdown": "^3.1.0-alpha.14",
+        "@osui/theme": "^3.1.0-alpha.14",
         "@storybook/addon-docs": "^7.5.1",
         "@storybook/addon-essentials": "^7.5.1",
         "@storybook/addon-interactions": "^7.5.1",
@@ -74,7 +74,7 @@
     },
     "peerDependencies": {
         "@ant-design/cssinjs": "^1.18.4",
-        "@osui/icons": "^3.0.0",
+        "@osui/icons": "^3.1.0-alpha.14",
         "antd": "^5.13.0",
         "react": ">=17.0.0",
         "react-dom": ">=17.0.0"
@@ -91,8 +91,8 @@
     },
     "dependencies": {
         "@huse/derived-state": "^1.1.1",
-        "@osui/highlight-text": "^3.1.0-alpha.2",
-        "@osui/select": "^3.1.0-alpha.2",
+        "@osui/highlight-text": "^3.1.0-alpha.14",
+        "@osui/select": "^3.1.0-alpha.14",
         "classnames": "^2.3.1",
         "hoist-non-react-statics": "^3.3.2"
     },
