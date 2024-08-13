@@ -39,7 +39,7 @@
     "webpack": "^5.52.1"
   },
   "peerDependencies": {
-    "antd": "^5.0.0"
+    "antd": "^5.13.0"
   },
   "repository": {
     "type": "git",
