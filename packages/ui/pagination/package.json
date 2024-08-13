@@ -1,6 +1,6 @@
 {
     "name": "@osui/pagination",
-    "version": "3.1.0-alpha.2",
+    "version": "3.1.0-alpha.14",
     "description": "",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -32,10 +32,10 @@
         "@babel/preset-env": "^7.10.4",
         "@babel/preset-react": "^7.10.4",
         "@babel/preset-typescript": "^7.23.2",
-        "@osui/brand-provider": "^3.1.0-alpha.2",
-        "@osui/icloud-theme": "^3.1.0-alpha.2",
-        "@osui/icons": "^3.1.0-alpha.2",
-        "@osui/theme": "^3.1.0-alpha.2",
+        "@osui/brand-provider": "^3.1.0-alpha.14",
+        "@osui/icloud-theme": "^3.1.0-alpha.14",
+        "@osui/icons": "^3.1.0-alpha.14",
+        "@osui/theme": "^3.1.0-alpha.14",
         "@storybook/addon-docs": "^7.5.1",
         "@storybook/addon-essentials": "^7.5.1",
         "@storybook/addon-interactions": "^7.5.1",
@@ -57,7 +57,6 @@
         "enzyme": "^3.11.0",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^27.0.6",
-        "less-plugin-npm-import": "^2.1.0",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -87,7 +86,7 @@
     "author": "zhangxingchang",
     "license": "MIT",
     "dependencies": {
-        "@osui/button": "^3.1.0-alpha.2",
+        "@osui/button": "^3.1.0-alpha.14",
         "classnames": "^2.3.1"
     },
     "publishConfig": {
