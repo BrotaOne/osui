@@ -26,9 +26,9 @@ export const genCascaderStyle: (props: {
     prefixCls: string;
     token: Record<string, string>;
     cssVar: CssVar;
-    antPrefixCls: string;
+    antPrefix: string;
 }) => CSSObject[] =
-    ({clsPrefix, prefixCls, token, antPrefixCls}) => {
+    ({clsPrefix, prefixCls, token, antPrefix}) => {
         const menuCss: Record<string, any> = {};
         for (let i = 10; i > 0; i--) {
             menuCss[`&.${clsPrefix}-menu-${i} .${clsPrefix}-menu`] = {
@@ -104,10 +104,10 @@ export const genCascaderStyle: (props: {
                 },
 
                 // eslint-disable-next-line max-len
-                [`&.${antPrefixCls}-select-open.@ant-prefix-select-arrow:not(.${antPrefixCls}-select-arrow-loading) > svg`]: {
+                [`&.${antPrefix}-select-open.@ant-prefix-select-arrow:not(.${antPrefix}-select-arrow-loading) > svg`]: {
                     'transform': token['selectArrowOpenTransformRotate'],
                 },
-                [`.${antPrefixCls}x-select-arrow`]: {
+                [`.${antPrefix}x-select-arrow`]: {
                     'svg': {
                         'font-size': '14px',
                         'transition': token['selectArrowTransition'],
@@ -121,7 +121,7 @@ export const useStyle = (
     clsPrefix: string,
     prefixCls: string,
     cssVar: ThemeConfig['cssVar'],
-    antPrefixCls: string
+    antPrefix: string
 ) => {
     const outTheme = useBrandContext();
     const hashed = outTheme.designToken?.hashed;
@@ -139,8 +139,9 @@ export const useStyle = (
             cssVar: cssVar
                 ? {
                     prefix: (typeof cssVar === 'object'
-                        && cssVar.prefix)
-                        || 'ant',
+                        && typeof cssVar.prefix === 'string')
+                        ? cssVar.prefix
+                        : antPrefix,
                 }
                 : undefined,
         }
@@ -154,7 +155,7 @@ export const useStyle = (
         },
         () => [
             genCascaderStyle({
-                clsPrefix, prefixCls, token, cssVar, antPrefixCls,
+                clsPrefix, prefixCls, token, cssVar, antPrefix,
             }),
         ]
     );

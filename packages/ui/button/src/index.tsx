@@ -88,7 +88,8 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('btn', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefixCls = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
 
     if (type === 'icon') {
         // icon作为button

@@ -340,7 +340,8 @@ export const genStepsStyle: (props: {
 export const useStyle = (
     clsPrefix: string,
     prefixCls: string,
-    cssVar: ThemeConfig['cssVar']
+    cssVar: ThemeConfig['cssVar'],
+    antPrefix: string
 ) => {
     const outTheme = useBrandContext();
     const hashed = outTheme.designToken?.hashed;
@@ -358,8 +359,9 @@ export const useStyle = (
             cssVar: cssVar
                 ? {
                     prefix: (typeof cssVar === 'object'
-                        && cssVar.prefix)
-                        || 'ant',
+                        && typeof cssVar.prefix === 'string')
+                        ? cssVar.prefix
+                        : antPrefix,
                 }
                 : undefined,
         }

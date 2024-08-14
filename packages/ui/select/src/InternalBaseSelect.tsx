@@ -28,7 +28,8 @@ function InternalSelect<ValueType = any, OptionType extends BaseOptionType | Def
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('select', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     const {brand} = useBrandContext();
     // 暂时用，后面需要透传下去
     const {mode, popupClassName} = restProps;

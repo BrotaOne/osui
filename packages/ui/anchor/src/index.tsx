@@ -14,7 +14,8 @@ const OSUIAnchor = ({className, ...props}: AnchorProps) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('alert', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefixCls = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
     return wrapSSROsui(
         // 这里antd的ref应该有问题
         <AntdAnchor className={innerClassName} {...props} />

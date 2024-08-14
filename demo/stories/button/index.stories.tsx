@@ -33,8 +33,7 @@ export const Demo = () => {
     const [cssVar, setCssVar] = useState(false);
     const theme = {
         cssVar: cssVar && {
-            prefix: 'ant',
-            key: 'default',
+            prefix: '',
         },
     };
     return (

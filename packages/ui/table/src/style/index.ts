@@ -433,8 +433,9 @@ export const useStyle = (
             cssVar: cssVar
                 ? {
                     prefix: (typeof cssVar === 'object'
-                        && cssVar.prefix)
-                        || 'ant',
+                        && typeof cssVar.prefix === 'string')
+                        ? cssVar.prefix
+                        : antPrefix,
                 }
                 : undefined,
         }

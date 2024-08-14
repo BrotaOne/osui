@@ -8,7 +8,8 @@ export default function Carousel(props: CarouselProps) {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('carousel', props.prefixCls);
-    const wrapSSROsui = useStyle('', prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle('', prefixCls, cssVar, antPrefix);
 
     return wrapSSROsui(<AntdCarousel {...props} />);
 }

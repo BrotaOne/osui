@@ -18,7 +18,8 @@ const Menu = ({className, expandIcon, rootClassName, ...props}: MenuProps) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('menu', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     const innerClassName = classNames(clsPrefix, className);
     const innerRootClassName = classNames(clsPrefix, rootClassName);
     const innerExpandIcon = expandIcon ?? <IconRightOutlined />;

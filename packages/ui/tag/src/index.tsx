@@ -44,7 +44,8 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('tag', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     let patchedIcon = null;
     if (closeIcon === false || closeIcon === undefined) {
         patchedIcon = null;

@@ -998,4 +998,8 @@ export default {
         ...newTokesn,
     },
     components,
+    cssVar: {
+        // 为了让自动生成 var 变量没有前缀，和之前的兼容
+        prefix: '',
+    },
 };

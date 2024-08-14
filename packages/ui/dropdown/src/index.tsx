@@ -16,7 +16,8 @@ const OSUIDropdown: DropdownInterface = ({overlayClassName, rootClassName, ...pr
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('dropdown', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     return wrapSSROsui(
         <AntdDropdown
             overlayClassName={classNames(clsPrefix, overlayClassName)}
@@ -34,7 +35,8 @@ const OSUIDropdownButton: React.FC<React.ComponentProps<typeof AntdDropdown.Butt
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('dropdown', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     return wrapSSROsui(
         <AntdDropdown.Button
             overlayClassName={classNames(clsPrefix, overlayClassName)}

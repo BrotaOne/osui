@@ -243,6 +243,7 @@ export const useStyle = (
     clsPrefix: string,
     prefixCls: string,
     cssVar: ThemeConfig['cssVar'],
+    antPrefix: string,
     tokenIn?: any
 ) => {
     const outTheme = useBrandContext();
@@ -261,8 +262,9 @@ export const useStyle = (
             cssVar: cssVar
                 ? {
                     prefix: (typeof cssVar === 'object'
-                        && cssVar.prefix)
-                        || 'ant',
+                        && typeof cssVar.prefix === 'string')
+                        ? cssVar.prefix
+                        : antPrefix,
                 }
                 : undefined,
         }

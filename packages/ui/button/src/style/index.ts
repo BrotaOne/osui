@@ -444,7 +444,8 @@ export const genButtonStyle: (props: {
 export const useStyle = (
     clsPrefix: string,
     prefixCls: string,
-    cssVar: ThemeConfig['cssVar']
+    cssVar: ThemeConfig['cssVar'],
+    antPrefix: string
 ) => {
     const outTheme = useBrandContext();
     // const cssVarIn = outTheme.designToken?.cssVar;
@@ -463,8 +464,9 @@ export const useStyle = (
             cssVar: cssVar
                 ? {
                     prefix: (typeof cssVar === 'object'
-                        && cssVar.prefix)
-                        || 'ant',
+                        && typeof cssVar.prefix === 'string')
+                        ? cssVar.prefix
+                        : antPrefix,
                 }
                 : undefined,
         }

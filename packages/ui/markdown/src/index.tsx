@@ -44,7 +44,8 @@ const Markdown: React.FC<Props> = ({content = '', className, plugins = [], prefi
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('markdown', prefixClsIn);
-    const wrapSSROsui = useStyle(`${clsPrefix}-main`, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(`${clsPrefix}-main`, prefixCls, cssVar, antPrefix);
     const {hashId} = useToken();
     const html = getHtml(content, plugins);
 

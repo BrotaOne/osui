@@ -11,7 +11,8 @@ const Space: FC<SpaceProps> = ({className, ...props}) => {
     const {space, getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('space', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
 
     const size = props.size || space?.size || 'small';
     const innerClassName = classNames(

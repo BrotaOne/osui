@@ -31,8 +31,9 @@ const Sider: SiderType = React.forwardRef<HTMLDivElement, SiderProps>((
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('layout', props.prefixCls);
+    const antPrefix = getPrefixCls('');
     const {hashId} = useToken();
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
 
     const [collapsed, setCollapsed] = useState(
         'collapsed' in props ? props.collapsed : props.defaultCollapsed

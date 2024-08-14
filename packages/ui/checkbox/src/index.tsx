@@ -20,7 +20,8 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({className, ...props}) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('checkbox-group', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     return wrapSSROsui(
         <AntdCheckboxGroup
             className={classNames(`${clsPrefix}-group`, className)}

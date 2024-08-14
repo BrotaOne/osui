@@ -53,7 +53,8 @@ const HighlightText: React.FC<Props> = ({children, mark, markProps, prefixCls: p
     const {getPrefixCls, theme} = React.useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('highlightText', prefixClsIn);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefix = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
     const {hashId} = useToken();
 
     React.useLayoutEffect(

@@ -37,7 +37,8 @@ const AutoComplete: React.ForwardRefRenderFunction<RefSelectProps, AutoCompleteP
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('auto-complete', props.prefixCls);
     const selectAntdprefixCls = getPrefixCls('select', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, selectAntdprefixCls);
+    const antPrefixCls = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls, selectAntdprefixCls);
     const [derivedKeyword, setDerivedKeyword] = useDerivedState(keyword);
     // osui-select的className是因为，auto-complete实际上就是select
     const innerClassName = classNames(className, clsPrefix, 'osui-select');
