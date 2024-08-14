@@ -6,10 +6,8 @@ import {ConfigProvider, ThemeConfig, App} from 'antd';
 import Empty from '@osui/empty';
 import zhCN from 'antd/locale/zh_CN';
 import {ConfigProviderProps} from 'antd/es/config-provider';
-import {tokens} from '@osui/icloud-theme';
-import {acud} from './overwriteAntdToken';
+import {acudTheme} from '@osui/icloud-theme';
 import {mergeTheme} from './mergeTheme';
-import {components} from './themeComponents';
 import {
     config, SetStaticMethodStyle, type Config,
 } from './SetStaticMethodStyle';
@@ -39,13 +37,7 @@ export const BrandContext = React.createContext<BrandContextValue>({
     // }
 });
 
-const defaultTheme: ThemeConfig = {
-    token: {
-        ...acud,
-        ...tokens,
-    },
-    components,
-};
+const defaultTheme: ThemeConfig = acudTheme;
 
 const iCloudConfigs: ConfigProviderProps = {
     autoInsertSpaceInButton: false,
