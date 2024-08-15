@@ -38,7 +38,8 @@ echo "export {
     v1,
     dark,
     acud,
-    tokens,
+    acudTheme,
+    getDesignToken,
 } from '@osui/icloud-theme';" >> ./src/index.ts
 echo "$DEPENDENCIES" ) # while 是 subshell， 括号来group subshell
 

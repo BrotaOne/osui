@@ -83,7 +83,8 @@ export {
     v1,
     dark,
     acud,
-    tokens,
+    acudTheme,
+    getDesignToken,
 } from '@osui/icloud-theme';
 export type {AffixProps} from '@osui/affix';
 export type {AnchorProps, AnchorLinkProps} from '@osui/anchor';
