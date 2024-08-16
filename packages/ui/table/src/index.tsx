@@ -8,7 +8,6 @@ import Spin from '@osui/spin';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import type {TableProps as AntdTableProps} from 'antd/es/table';
 import useCustomSortForCustomIcons from './useCustomHeadIcons';
-// import useTablePaginationStylePatch from './useTablePaginationStylePatch';
 // import './index.less';
 import {useStyle} from './style';
 import useSetPaginationPaddingRightForQuickJumper from './useSetPaginationPaddingRightForQuickJumper';
@@ -98,7 +97,10 @@ function Table<RecordType extends Record<string, any>>(
 
     useSetPaginationPaddingRightForQuickJumper({containerDomRef, prefixCls});
     // 替换 antd 默认的 筛选 和 排序图标
-    const {columns, setSortedInfo} = useCustomSortForCustomIcons(props.columns || [], prefixCls);
+    const {columns, setSortedInfo} = useCustomSortForCustomIcons(
+        props.columns || [],
+        prefixCls
+    );
 
     const handleChange: TableProps<any>['onChange'] = (pagination, filters, sorter, extra) => {
         if (Array.isArray(sorter)) {
