@@ -37,7 +37,8 @@ const SubMenu: React.FC<AntdSubMenuProps> = ({popupClassName, ...props}) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('menu');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefixCls = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
     return wrapSSROsui(
         <AntdMenu.SubMenu
             popupClassName={innerPopupClassName}

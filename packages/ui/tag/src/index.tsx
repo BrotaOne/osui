@@ -81,7 +81,8 @@ const CheckableTag: React.FC<CheckableTagProps> = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('tag', props.prefixCls);
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
+    const antPrefixCls = getPrefixCls('');
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
     return wrapSSROsui(
         <AntdTag.CheckableTag
             className={classNames(`${clsPrefix}-checkable`, props.className)}
