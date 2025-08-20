@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.0.0-beta.2 (2025-08-20)
+
+
+### Bug Fixes
+
+* @osui/icons调整icon名称，如下： ([8b9033a](https://gitee.com/gitee-fe/osui/tree/master/commits/8b9033af14f14ebae853692523739ca22c64123a))
+* list, pagination/table, popover, switch, timeline, tooltip ([2f08302](https://gitee.com/gitee-fe/osui/tree/master/commits/2f08302a6e008c3039175a9ef283181ac3e62d31))
+* List修复loading ([498c642](https://gitee.com/gitee-fe/osui/tree/master/commits/498c6424f02033b4f6012c006f659e45e19cea68))
+* list修复loading的问题 ([121da21](https://gitee.com/gitee-fe/osui/tree/master/commits/121da21c5795ee2125528b60e0f209b9b1b4bdeb))
+* tree-select icon, pagination icon, switch size ([5d28ebf](https://gitee.com/gitee-fe/osui/tree/master/commits/5d28ebfbfe3963998c42820ac29b468197df5e69))
+* 修复space, carousel报错, 升级reksript, 修复一点点type问题 ([6c8ec58](https://gitee.com/gitee-fe/osui/tree/master/commits/6c8ec58c90fe5cc63ea6b332e6e443461d1285f2))
+* 修复typescript 类型错误 ([f18efab](https://gitee.com/gitee-fe/osui/tree/master/commits/f18efab2a15a47cc163dceba128b521c5522063f))
+* 升级antd到4.18.4,但是现在table exapandable和rowSelection的顺序有问题 ([f7af7bb](https://gitee.com/gitee-fe/osui/tree/master/commits/f7af7bbad5ed53099f4cc4c97c5852e631846616))
+* 升级antd到4.21.3, 清除一些不必要的组件 ([e582467](https://gitee.com/gitee-fe/osui/tree/master/commits/e58246764a8309a964b86f26fa229242d9241173))
+* 对组件增加类型导出 ([36160d1](https://gitee.com/gitee-fe/osui/tree/master/commits/36160d14e8fee068f34d363d529345d95cfbd39e))
+* 尝试修复version ([6e644e7](https://gitee.com/gitee-fe/osui/tree/master/commits/6e644e74a0bf1810ef9a29f436253c5c44ecd241))
+* 尝试修复version ([3353ccc](https://gitee.com/gitee-fe/osui/tree/master/commits/3353ccca664ebaa5998fb53977dc53d8fe083b94))
+* 新增Breadcrumb, Steps, Tree, Empty, AutoComplete, Cascader, Col, Dropdown, InputNumber, List, Menu, Row, Spon, TimePicker, TreeSelect 组件 ([2c4a9df](https://gitee.com/gitee-fe/osui/tree/master/commits/2c4a9df6af2a0283da7027a20043b0ccebceb2c4))
+* 补齐antd组件, 补齐文档 ([b6c76a8](https://gitee.com/gitee-fe/osui/tree/master/commits/b6c76a864b121479e151a97e926546f3370d0aed))
+* 调整icon版本 ([c19768e](https://gitee.com/gitee-fe/osui/tree/master/commits/c19768e1cb62800e4820e0b49cce2eb000515c23))
+
+
+
+
+
 # [5.0.0-beta.1](https://gitee.com/gitee-fe/osui/tree/master/compare/v3.1.0...v5.0.0-beta.1) (2025-07-08)
 
 

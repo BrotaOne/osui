@@ -1,6 +1,6 @@
 {
   "name": "@osui/tag",
-  "version": "5.0.0-beta.1",
+  "version": "5.0.0-beta.2",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -37,10 +37,10 @@
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@osui/brand-provider": "^5.0.0-beta.1",
-    "@osui/icloud-theme": "^5.0.0-beta.1",
-    "@osui/icons": "^5.0.0-beta.1",
-    "@osui/version": "^5.0.0-beta.1",
+    "@osui/brand-provider": "^5.0.0-beta.2",
+    "@osui/icloud-theme": "^5.0.0-beta.2",
+    "@osui/icons": "^5.0.0-beta.2",
+    "@osui/version": "^5.0.0-beta.2",
     "@storybook/addon-docs": "9.0.11",
     "@storybook/cli": "9.0.11",
     "@storybook/react-vite": "9.0.11",
@@ -89,9 +89,9 @@
   "author": "huoyuxuan",
   "license": "MIT",
   "dependencies": {
-    "@osui/divider": "^5.0.0-beta.1",
-    "@osui/input": "^5.0.0-beta.1",
-    "@osui/tooltip": "^5.0.0-beta.1",
+    "@osui/divider": "^5.0.0-beta.2",
+    "@osui/input": "^5.0.0-beta.2",
+    "@osui/tooltip": "^5.0.0-beta.2",
     "classnames": "^2.3.1"
   },
   "publishConfig": {
