@@ -1,6 +1,6 @@
 {
   "name": "@osui/table",
-  "version": "5.0.0-beta.2",
+  "version": "5.0.0-beta.3",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -34,8 +34,8 @@
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.23.2",
     "@chromatic-com/storybook": "4.0.0",
-    "@osui/brand-provider": "^5.0.0-beta.2",
-    "@osui/form": "^5.0.0-beta.2",
+    "@osui/brand-provider": "^5.0.0-beta.3",
+    "@osui/form": "^5.0.0-beta.3",
     "@osui/icloud-theme": "^5.0.0-beta.2",
     "@osui/icons": "^5.0.0-beta.2",
     "@osui/pagination": "^5.0.0-beta.2",

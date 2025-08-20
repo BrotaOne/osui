@@ -1,6 +1,6 @@
 {
   "name": "@osui/select",
-  "version": "5.0.0-beta.2",
+  "version": "5.0.0-beta.3",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -83,9 +83,9 @@
   },
   "dependencies": {
     "@huse/derived-state": "^1.1.1",
-    "@osui/brand-provider": "^5.0.0-beta.2",
-    "@osui/popover": "^5.0.0-beta.2",
-    "@osui/tag": "^5.0.0-beta.2",
+    "@osui/brand-provider": "^5.0.0-beta.3",
+    "@osui/popover": "^5.0.0-beta.3",
+    "@osui/tag": "^5.0.0-beta.3",
     "@osui/tooltip": "^5.0.0-beta.2",
     "classnames": "^2.3.1",
     "hoist-non-react-statics": "^3.3.2"
