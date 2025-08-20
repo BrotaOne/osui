@@ -39,6 +39,7 @@
     "@osui/icloud-theme": "^5.0.0-beta.1",
     "@osui/icons": "^5.0.0-beta.1",
     "@osui/modal": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.1",
     "@osui/popover": "^5.0.0-beta.1",
     "@osui/select": "^5.0.0-beta.1",
     "@osui/table": "^5.0.0-beta.1",
@@ -75,6 +76,7 @@
   },
   "peerDependencies": {
     "antd": "^5.0.0",
+    "@osui/version": "^5.0.0-beta.1",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },

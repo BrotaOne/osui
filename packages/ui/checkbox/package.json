@@ -35,6 +35,7 @@
     "@chromatic-com/storybook": "4.0.0",
     "@osui/brand-provider": "^5.0.0-beta.1",
     "@osui/icloud-theme": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.1",
     "@osui/icons": "^5.0.0-beta.1",
     "@storybook/addon-docs": "9.0.11",
     "@storybook/cli": "9.0.11",
@@ -68,6 +69,7 @@
   },
   "peerDependencies": {
     "@ant-design/cssinjs": "^1.18.4",
+    "@osui/version": "^5.0.0-beta.1",
     "antd": "^5.13.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"

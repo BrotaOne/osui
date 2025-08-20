@@ -43,6 +43,7 @@
     "@osui/icons": "^5.0.0-beta.1",
     "@osui/input": "^5.0.0-beta.1",
     "@osui/input-number": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.1",
     "@osui/radio": "^5.0.0-beta.1",
     "@osui/select": "^5.0.0-beta.1",
     "@osui/switch": "^5.0.0-beta.1",
@@ -79,6 +80,7 @@
   },
   "peerDependencies": {
     "antd": "^5.0.0",
+    "@osui/version": "^5.0.0-beta.1",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },

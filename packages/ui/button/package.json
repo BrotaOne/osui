@@ -36,6 +36,7 @@
     "@osui/divider": "^5.0.0-beta.1",
     "@osui/flex": "^5.0.0-beta.1",
     "@osui/gap": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.1",
     "@osui/icloud-theme": "^5.0.0-beta.1",
     "@osui/markdown": "^5.0.0-beta.1",
     "@osui/space": "^5.0.0-beta.1",
@@ -72,6 +73,7 @@
   },
   "peerDependencies": {
     "@osui/icons": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.1",
     "antd": "^5.13.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"

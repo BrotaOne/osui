@@ -28,6 +28,7 @@
   ],
   "devDependencies": {
     "@ant-design/cssinjs": "^1.18.4",
+    "@osui/version": "^5.0.0-beta.1",
     "@babel/cli": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
@@ -72,6 +73,7 @@
   },
   "peerDependencies": {
     "antd": "^5.0.0",
+    "@osui/version": "^5.0.0-beta.1",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },

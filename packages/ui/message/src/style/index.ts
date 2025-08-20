@@ -1,8 +1,9 @@
 import type {CSSObject} from '@ant-design/cssinjs';
 import {Keyframes} from '@ant-design/cssinjs';
+import version from '@osui/version';
 import {useBrandContext} from '@osui/brand-provider';
 import {useStyleRegister, useCacheToken} from '@ant-design/cssinjs';
-import {theme, ThemeConfig} from 'antd';
+import {theme, ThemeConfig, version as antdVersion} from 'antd';
 
 const {useToken} = theme;
 
@@ -249,24 +250,26 @@ export const useStyle = (
     const outTheme = useBrandContext();
     const hashed = outTheme.designToken?.hashed;
     const {token: outerToken, theme, hashId} = useToken();
-
+    const finalCssVar = cssVar
+        ? typeof cssVar === 'boolean'
+            ? {
+                prefix: `osui-${version}-${antPrefix}`,
+                key: `osui-${version}-antd-${antdVersion}`,
+            }
+            : {
+                prefix: cssVar.prefix || antPrefix,
+                key: cssVar.key,
+            }
+        : undefined;
+    const salt = `${antdVersion}-${version}-${hashed || ''}`;
     const [token] = useCacheToken(
         theme as any,
         [
             prepareComponentToken(tokenIn || outerToken),
         ],
         {
-            salt: typeof hashed === 'string'
-                ? hashed
-                : Math.random().toString(36).slice(-8),
-            cssVar: cssVar
-                ? {
-                    prefix: (typeof cssVar === 'object'
-                        && typeof cssVar.prefix === 'string')
-                        ? cssVar.prefix
-                        : antPrefix,
-                }
-                : undefined,
+            salt,
+            cssVar: finalCssVar,
         }
     );
     const wrapSSROsui = useStyleRegister(
@@ -278,7 +281,7 @@ export const useStyle = (
         },
         () => [
             genMessageStyle({
-                clsPrefix, prefixCls, token, cssVar,
+                clsPrefix, prefixCls, token, cssVar: finalCssVar,
             }),
         ]
     );

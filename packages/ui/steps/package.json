@@ -38,6 +38,7 @@
     "@osui/icloud-theme": "^5.0.0-beta.1",
     "@osui/icons": "^5.0.0-beta.1",
     "@osui/space": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.1",
     "@storybook/addon-docs": "9.0.11",
     "@storybook/cli": "9.0.11",
     "@storybook/react-vite": "9.0.11",
@@ -73,6 +74,7 @@
   },
   "peerDependencies": {
     "antd": "^5.0.0",
+    "@osui/version": "^5.0.0-beta.1",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },
