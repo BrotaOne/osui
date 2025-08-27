@@ -35,10 +35,10 @@
     "@chromatic-com/storybook": "4.0.0",
     "@osui/brand-provider": "^5.0.0-beta.3",
     "@osui/breadcrumb": "^5.0.0-beta.3",
-    "@osui/icloud-theme": "^5.0.0-beta.2",
-    "@osui/icons": "^5.0.0-beta.2",
+    "@osui/icloud-theme": "^5.0.0-beta.3",
+    "@osui/icons": "^5.0.0-beta.3",
     "@osui/menu": "^5.0.0-beta.3",
-    "@osui/version": "^5.0.0-beta.2",
+    "@osui/version": "^5.0.0-beta.3",
     "@storybook/addon-docs": "9.0.11",
     "@storybook/cli": "9.0.11",
     "@storybook/react-vite": "9.0.11",
@@ -50,7 +50,7 @@
     "@types/react-dom": "^17.0.2",
     "@types/react-test-renderer": "^17.0.1",
     "@vitejs/plugin-react": "^4.4.1",
-    "antd": "^5.13.0",
+    "antd": "5.24.2",
     "cpy-cli": "^3.1.1",
     "enzyme": "^3.11.0",
     "eslint-plugin-storybook": "9.0.11",
@@ -71,7 +71,7 @@
     "vite": "^6.3.5"
   },
   "peerDependencies": {
-    "@osui/version": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.3",
     "antd": "^5.0.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"

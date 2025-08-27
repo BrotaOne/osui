@@ -115,8 +115,7 @@ const Breadcrumb: BreadcrumbInterface = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('breadcrumb', (props as any).prefixCls || '');
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
 
     const hasMoreThanXItem = (x: number) => (
         // 使用children的情况

@@ -27,8 +27,7 @@ const OSUIBadge: React.FC<BadgeProps> = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('badge', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
 
     const innerClassName = classNames(
         clsPrefix,

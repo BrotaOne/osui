@@ -85,8 +85,7 @@ const QuickEditSelect = (props: QuickEditSelectProps) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('quickEdit', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const {hashId} = useToken();
     const handleDisplay = useCallback(
         value => {

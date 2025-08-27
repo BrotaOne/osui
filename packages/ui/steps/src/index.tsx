@@ -22,8 +22,7 @@ const Steps: StepsInterface = ({className, compact, ...props}) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('steps', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const innerClassName = classNames(
         className,
         clsPrefix,
@@ -47,8 +46,7 @@ const ProcessOnlySteps: ProcessOnlyStepsInterface = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('alert', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(<Steps {...props} />);
 };
 
@@ -56,8 +54,7 @@ const ProcessOnlyStep: React.FC<AntdStepProps & {prefixCls?: string}> = props =>
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('alert', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const innerStatus = props.status === 'finish' ? 'process' : props.status;
     return wrapSSROsui(
         <AntdSteps.Step

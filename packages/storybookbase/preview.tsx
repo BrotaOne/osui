@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import type {Preview} from '@storybook/react-vite';
 import '../ui-theme/icloud-theme/es/vars.css';
 import BrandProvider from '../ui/brand-provider/es';
@@ -17,11 +17,20 @@ const preview: Preview = {
         },
     },
     decorators: [
-        Story => (
-            <BrandProvider brand="icloud" theme={{cssVar: false}}>
-                <Story />
-            </BrandProvider>
-        ),
+        Story => {
+            const [cssVar, setCssVar] = useState(false);
+            const onClick = () => setCssVar(v => !v);
+            return (
+                <BrandProvider brand="icloud" theme={{cssVar}}>
+                    <div style={{marginBottom: 10}}>
+                        <button onClick={onClick}>
+                            {cssVar ? '关闭' : '开启'}cssVar
+                        </button>
+                    </div>
+                    <Story />
+                </BrandProvider>
+            );
+        },
     ],
 };
 

@@ -26,7 +26,7 @@
     "es/*.less"
   ],
   "devDependencies": {
-    "@osui/icons": "^5.0.0-beta.1",
+    "@osui/icons": "^5.0.0-beta.3",
     "@babel/cli": "^7.10.5",
     "@osui/brand-provider": "^3.1.0-alpha.14",
     "@osui/ui": "^3.1.0-alpha.14",
@@ -47,7 +47,7 @@
     "@types/jest": "^27.0.0",
     "@types/react-dom": "^17.0.2",
     "@types/react-test-renderer": "^17.0.1",
-    "antd": "^5.13.0",
+    "antd": "5.24.2",
     "cpy-cli": "^3.1.1",
     "enzyme": "^3.11.0",
     "identity-obj-proxy": "^3.0.0",
@@ -62,7 +62,7 @@
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
-    "antd": "^5.13.0",
+    "antd": "^5.0.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },

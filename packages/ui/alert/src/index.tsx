@@ -102,8 +102,7 @@ const Alert: AlertInterface = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('alert', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const [expanded, {on, off}] = useBoolean(false);
     const [isDestroy, {on: destroy}] = useBoolean(false);
 

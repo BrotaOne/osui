@@ -17,8 +17,7 @@ const Menu = ({className, expandIcon, rootClassName, ...props}: MenuProps) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('menu', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const innerClassName = classNames(clsPrefix, className);
     const innerRootClassName = classNames(clsPrefix, rootClassName);
     const innerExpandIcon = expandIcon ?? <IconRightOutlined />;
@@ -37,8 +36,7 @@ const SubMenu: React.FC<AntdSubMenuProps> = ({popupClassName, ...props}) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('menu');
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdMenu.SubMenu
             popupClassName={innerPopupClassName}

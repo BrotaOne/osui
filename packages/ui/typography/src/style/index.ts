@@ -44,8 +44,7 @@ export const genTypographyStyle: (props: {
 export const useStyle = (
     clsPrefix: string,
     prefixCls: string,
-    cssVar: ThemeConfig['cssVar'],
-    antPrefix: string
+    cssVar: ThemeConfig['cssVar']
 ) => {
     const outTheme = useBrandContext();
     const hashed = outTheme.designToken?.hashed;
@@ -53,12 +52,12 @@ export const useStyle = (
     const finalCssVar = cssVar
         ? typeof cssVar === 'boolean'
             ? {
-                prefix: `osui-${version}-${antPrefix}`,
-                key: `osui-${version}-antd-${antdVersion}`,
+                prefix: 'osui-antd',
+                key: 'osui-antd',
             }
             : {
-                prefix: cssVar.prefix || antPrefix,
-                key: cssVar.key,
+                prefix: cssVar.prefix || 'osui-antd',
+                key: cssVar.key || 'osui-antd',
             }
         : undefined;
     const salt = `${antdVersion}-${version}-${hashed || ''}`;

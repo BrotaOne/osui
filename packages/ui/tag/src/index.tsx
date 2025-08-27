@@ -44,8 +44,7 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('tag', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     let patchedIcon = null;
     if (closeIcon === false || closeIcon === undefined) {
         patchedIcon = null;
@@ -81,8 +80,7 @@ const CheckableTag: React.FC<CheckableTagProps> = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('tag', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdTag.CheckableTag
             className={classNames(`${clsPrefix}-checkable`, props.className)}

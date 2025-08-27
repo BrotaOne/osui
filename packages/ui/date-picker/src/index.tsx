@@ -14,8 +14,7 @@ function attachOSUIClassName(Component: any) {
             const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
             const cssVar = theme?.cssVar;
             const prefixCls = getPrefixCls('picker', props.prefixCls);
-            const antPrefix = getPrefixCls('');
-            const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+            const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
             return wrapSSROsui(
                 <Component
                     ref={ref}

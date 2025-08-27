@@ -12,8 +12,7 @@ const Rate: React.ForwardRefRenderFunction<any, AntdRateProps> = ({className, ..
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('rate', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
 
     const innerClassName = classNames(className, clsPrefix);
     return wrapSSROsui(

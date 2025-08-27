@@ -23,8 +23,7 @@ const Collapse: CollapseInterface = ({className, levelChild, ghost, expandIcon, 
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('colla', restProps.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
 
     const defaultProps = {
         className: classNames(
@@ -69,8 +68,7 @@ const CollapsePanel: React.FC<CollapsePanelProps> = ({className, level, ...props
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('alert', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const classes = classNames(
         className,
         {

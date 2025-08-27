@@ -23,8 +23,7 @@ const OSUIDrawer = ({closeIcon, size, className, closable = true, ...props}: Dra
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('drawer', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
 
     const innerCloseIcon = closeIcon || <IconCloseOutlined />;
     const innerWidth = props.width ?? (size && sizeWidthMap[size]);

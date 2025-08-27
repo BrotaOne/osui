@@ -25,8 +25,7 @@ const OSUITooltip = React.forwardRef<TooltipRef, TooltipProps>(({overlayClassNam
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('tooltip', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdTooltip
             ref={ref}

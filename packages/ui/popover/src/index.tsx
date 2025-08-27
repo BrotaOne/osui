@@ -17,13 +17,12 @@ const Popover: React.ForwardRefRenderFunction<TooltipRef, PopoverProps> = (props
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('popover', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     let innerTitle = props.title;
     if (props.showCloseIcon) {
         innerTitle = (
             <div>
-                {props.title}
+                {typeof props.title === 'function' ? props.title() : props.title}
                 <IconCloseOutlined
                     className={`${clsPrefix}-close-icon`}
                     // eslint-disable-next-line react/jsx-no-bind

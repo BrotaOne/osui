@@ -29,8 +29,7 @@ const InternalForm = React.forwardRef<FormInstance, React.PropsWithChildren<Form
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('form', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     useLayoutEffect(
         () => {
             const formName = props.name;

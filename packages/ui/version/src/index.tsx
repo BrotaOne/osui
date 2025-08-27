@@ -1,2 +1,1 @@
-// build 在 scripts/version.mjs中执行
-export default 'placeholder';
+export default '5.0.0-beta.3';

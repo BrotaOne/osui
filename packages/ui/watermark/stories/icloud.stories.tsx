@@ -54,15 +54,21 @@ export const Primary: Story = {
     },
 };
 
-export const Demo: React.FC = () => (
-    <Watermark
-        height={30}
-        width={130}
-        image={url}
-    >
-        <div style={{height: 500}} />
-    </Watermark>
-);
+export const Demo: Story = {
+    args: {
+        rotate: 22,
+        width: 130,
+        height: 40,
+        content: 'baidu@osui/ui',
+    },
+    render: args => (
+        <Watermark
+            {...args}
+        >
+            <div style={{height: 500}} />
+        </Watermark>
+    ),
+};
 
 export const Api = () => {
     return (

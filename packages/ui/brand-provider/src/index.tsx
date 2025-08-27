@@ -38,6 +38,28 @@ const defaultTheme: ThemeConfig = acudTheme;
 
 export const useBrandContext = () => useContext(BrandContext);
 
+const getCssVar = (theme: ThemeConfig) => {
+    const {cssVar} = theme;
+
+    if (!cssVar) {
+        return cssVar;
+    }
+
+    const defaultCssVar = {
+        prefix: 'osui-antd',
+        key: 'osui-antd',
+    };
+
+    if (cssVar === true) {
+        return defaultCssVar;
+    }
+
+    return {
+        prefix: cssVar.prefix || defaultCssVar.prefix,
+        key: cssVar.key || defaultCssVar.key,
+    };
+};
+
 interface BrandProviderComponent extends React.FC<React.PropsWithChildren<{
     brand?: Brand;
     theme?: Partial<ThemeConfig>;
@@ -50,7 +72,7 @@ const BrandProvider: BrandProviderComponent = (
     {brand, theme: outerTheme, children, ...ConfigProviderProps}
 ) => {
     const themeFromHook = useRef<ThemeConfig>({});
-    const [finalTheme, setTheme] = useState<any>(theme);
+    const [finalTheme, setTheme] = useState<any>(defaultTheme);
     const [isFilteredEmpty, setIsFilteredEmpty] = useState(false);
 
     const iCloudConfigs: ConfigProviderProps = useMemo(
@@ -95,6 +117,7 @@ const BrandProvider: BrandProviderComponent = (
                     defaultTheme
                 )
             );
+            newTheme.cssVar = getCssVar(newTheme);
             // 合并优先级
             setTheme(newTheme as unknown as typeof theme);
         },
@@ -111,10 +134,14 @@ const BrandProvider: BrandProviderComponent = (
                     themeFromHook.current
                 );
             }
-            setTheme((oldTheme: any) => mergeTheme(
-                themeFromHook.current,
-                oldTheme
-            ));
+            setTheme((oldTheme: any) => {
+                const newTheme = mergeTheme(
+                    themeFromHook.current,
+                    oldTheme
+                );
+                newTheme.cssVar = getCssVar(newTheme);
+                return newTheme;
+            });
         },
         []
     );
@@ -131,7 +158,6 @@ const BrandProvider: BrandProviderComponent = (
         <BrandContext.Provider value={context}>
             <ConfigProvider {...iCloudConfigs} {...ConfigProviderProps} theme={finalTheme}>
                 <App>
-                    {/* <SetHashIdNullDom /> */}
                     <SetStaticMethodStyle />
                     {children}
                 </App>

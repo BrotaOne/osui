@@ -18,8 +18,7 @@ const BackTop: React.FC<BackTopProps> = ({type = 'default', transparent, ...prop
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('back-top', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const {hashId} = useToken();
     const innerClassName = classNames(
         clsPrefix,

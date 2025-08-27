@@ -20,8 +20,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({className, ...props}) => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('checkbox-group', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdCheckboxGroup
             className={classNames(`${clsPrefix}-group`, className)}
@@ -39,8 +38,7 @@ const Checkbox: CompoundedComponent = React.forwardRef(({className, ...props}, r
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('checkbox', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdCheckbox
             ref={ref}

@@ -16,8 +16,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(({className
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('radio', restProps.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdRadioGroup
             ref={ref}
@@ -36,8 +35,7 @@ const RefRadio: React.ForwardRefRenderFunction<CheckboxRef, AntdRadioProps> = ({
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('alert', restProps.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     return wrapSSROsui(
         <AntdRadio
             ref={ref}

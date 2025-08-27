@@ -22,8 +22,7 @@ const Slider = React.forwardRef<unknown, AntdSliderSingleProps | AntdSliderRange
         const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
         const cssVar = theme?.cssVar;
         const prefixCls = getPrefixCls('slider', props.prefixCls);
-        const antPrefix = getPrefixCls('');
-        const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefix);
+        const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
         const innerClassName = classNames(
             clsPrefix,
             className

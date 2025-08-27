@@ -11,8 +11,7 @@ const Spin: React.FC<React.PropsWithChildren<SpinProps>> = props => {
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('spin', props.prefixCls);
-    const antPrefix = getPrefixCls('');
-    const wrapSSROsui = useStyle('', prefixCls, cssVar, antPrefix);
+    const wrapSSROsui = useStyle('', prefixCls, cssVar);
     const {hashId} = useToken();
 
     const innerIndicator = props.indicator ?? <LoadingIcon className={hashId} />;

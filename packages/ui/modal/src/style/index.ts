@@ -243,19 +243,25 @@ export const useStyle = (
     const finalCssVar = cssVar
         ? typeof cssVar === 'boolean'
             ? {
-                prefix: `osui-${version}-${antPrefix}`,
-                key: `osui-${version}-antd-${antdVersion}`,
+                prefix: 'osui-antd',
+                key: 'osui-antd',
             }
             : {
-                prefix: cssVar.prefix || antPrefix,
-                key: cssVar.key,
+                prefix: cssVar.prefix || 'osui-antd',
+                key: cssVar.key || 'osui-antd',
             }
         : undefined;
     const salt = `${antdVersion}-${version}-${hashed || ''}`;
-    const [token] = useCacheToken(theme as any, [prepareComponentToken(tokenIn || outerToken)], {
-        salt,
-        cssVar: finalCssVar,
-    });
+    const [token] = useCacheToken(
+        theme as any,
+        [
+            prepareComponentToken(tokenIn || outerToken),
+        ],
+        {
+            salt,
+            cssVar: finalCssVar,
+        }
+    );
 
     const wrapSSROsui = useStyleRegister(
         {

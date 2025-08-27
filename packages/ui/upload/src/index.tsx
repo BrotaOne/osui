@@ -30,8 +30,7 @@ const OSUIUpload = React.forwardRef(({className, dashedBorder, ...props}: Upload
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('upload', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const innerClassNames = classNames(
         clsPrefix,
         {[`${clsPrefix}-dashedBorder`]: dashedBorder},
@@ -51,8 +50,7 @@ const OSUIUploadDragger = React.forwardRef((
     const {getPrefixCls, theme} = useContext(ConfigProvider.ConfigContext);
     const cssVar = theme?.cssVar;
     const prefixCls = getPrefixCls('upload', props.prefixCls);
-    const antPrefixCls = getPrefixCls('');
-    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar, antPrefixCls);
+    const wrapSSROsui = useStyle(clsPrefix, prefixCls, cssVar);
     const innerClassNames = classNames(
         clsPrefix,
         {[`${clsPrefix}-dashedBorder`]: dashedBorder},

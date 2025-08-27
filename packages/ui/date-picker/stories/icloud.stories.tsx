@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import {Row} from 'antd';
+import {Row, version} from 'antd';
 import dayjs from 'dayjs';
 import Space from '@osui/space';
-import version from 'antd/es/version';
 import BrandProvider from '@osui/brand-provider';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import locale from 'antd/locale/zh_CN';
@@ -25,7 +24,11 @@ export default {
 
 export const Demo = () => {
     return (
-        <BrandProvider brand="icloud" locale={locale}>
+        <BrandProvider
+            brand="icloud"
+            locale={locale}
+            theme={{components: {DatePicker: {colorBgContainer: '#fff'}}}}
+        >
             {version}
             <div style={{padding: 20}}>
                 <h1>日选择</h1>

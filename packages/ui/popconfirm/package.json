@@ -34,11 +34,11 @@
     "@babel/preset-typescript": "^7.23.2",
     "@chromatic-com/storybook": "4.0.0",
     "@osui/brand-provider": "^5.0.0-beta.3",
-    "@osui/button": "^5.0.0-beta.2",
-    "@osui/icloud-theme": "^5.0.0-beta.2",
-    "@osui/icons": "^5.0.0-beta.2",
+    "@osui/button": "^5.0.0-beta.3",
+    "@osui/icloud-theme": "^5.0.0-beta.3",
+    "@osui/icons": "^5.0.0-beta.3",
     "@osui/message": "^5.0.0-beta.3",
-    "@osui/version": "^5.0.0-beta.2",
+    "@osui/version": "^5.0.0-beta.3",
     "@storybook/addon-docs": "9.0.11",
     "@storybook/cli": "9.0.11",
     "@storybook/react-vite": "9.0.11",
@@ -71,7 +71,7 @@
     "vite": "^6.3.5"
   },
   "peerDependencies": {
-    "@osui/version": "^5.0.0-beta.1",
+    "@osui/version": "^5.0.0-beta.3",
     "antd": "^5.0.0",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
