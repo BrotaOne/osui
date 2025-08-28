@@ -18,6 +18,7 @@
     "build": "sh scripts/build.sh",
     "prepublishOnly": "pnpm run build",
     "storybook": "storybook dev -p 8700",
+    "version": "node scripts/version.mjs",
     "clean": "rm -rf node_modules && rm -rf es",
     "test": "echo 'jest --config jest.config.js'",
     "sb-upgrade": "storybook upgrade",
